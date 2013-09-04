@@ -18,6 +18,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    //UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    //btn.frame = CGRectMake(50, 100, 80, 50);
+    //btn
+    
+    NSLog(@"%f", _btn.frame.origin.x);
+
 }
 
 - (void)didReceiveMemoryWarning

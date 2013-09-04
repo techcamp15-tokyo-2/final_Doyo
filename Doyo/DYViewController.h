@@ -10,4 +10,5 @@
 
 @interface DYViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 @end
