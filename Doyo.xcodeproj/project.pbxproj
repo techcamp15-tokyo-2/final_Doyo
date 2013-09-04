@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3BCE251617D71C9F00C9ABC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251517D71C9F00C9ABC1 /* UIKit.framework */; };
+		3BCE251817D71C9F00C9ABC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251717D71C9F00C9ABC1 /* Foundation.framework */; };
+		3BCE251A17D71C9F00C9ABC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251917D71C9F00C9ABC1 /* CoreGraphics.framework */; };
+		3BCE252017D71CA000C9ABC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE251E17D71CA000C9ABC1 /* InfoPlist.strings */; };
+		3BCE252217D71CA000C9ABC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE252117D71CA000C9ABC1 /* main.m */; };
+		3BCE252617D71CA000C9ABC1 /* DYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE252517D71CA000C9ABC1 /* DYAppDelegate.m */; };
+		3BCE252817D71CA000C9ABC1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE252717D71CA000C9ABC1 /* Default.png */; };
+		3BCE252A17D71CA000C9ABC1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE252917D71CA000C9ABC1 /* Default@2x.png */; };
+		3BCE252C17D71CA000C9ABC1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE252B17D71CA000C9ABC1 /* Default-568h@2x.png */; };
+		3BCE252F17D71CA000C9ABC1 /* DYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE252E17D71CA000C9ABC1 /* DYViewController.m */; };
+		3BCE253217D71CA000C9ABC1 /* DYViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE253017D71CA000C9ABC1 /* DYViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3BCE251217D71C9F00C9ABC1 /* Doyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BCE251517D71C9F00C9ABC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3BCE251717D71C9F00C9ABC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3BCE251917D71C9F00C9ABC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3BCE251D17D71CA000C9ABC1 /* Doyo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Doyo-Info.plist"; sourceTree = "<group>"; };
+		3BCE251F17D71CA000C9ABC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3BCE252117D71CA000C9ABC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3BCE252317D71CA000C9ABC1 /* Doyo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Doyo-Prefix.pch"; sourceTree = "<group>"; };
+		3BCE252417D71CA000C9ABC1 /* DYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYAppDelegate.h; sourceTree = "<group>"; };
+		3BCE252517D71CA000C9ABC1 /* DYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYAppDelegate.m; sourceTree = "<group>"; };
+		3BCE252717D71CA000C9ABC1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3BCE252917D71CA000C9ABC1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		3BCE252B17D71CA000C9ABC1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3BCE252D17D71CA000C9ABC1 /* DYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYViewController.h; sourceTree = "<group>"; };
+		3BCE252E17D71CA000C9ABC1 /* DYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYViewController.m; sourceTree = "<group>"; };
+		3BCE253117D71CA000C9ABC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DYViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3BCE250F17D71C9F00C9ABC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BCE251617D71C9F00C9ABC1 /* UIKit.framework in Frameworks */,
+				3BCE251817D71C9F00C9ABC1 /* Foundation.framework in Frameworks */,
+				3BCE251A17D71C9F00C9ABC1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3BCE250917D71C9F00C9ABC1 = {
+			isa = PBXGroup;
+			children = (
+				3BCE251B17D71CA000C9ABC1 /* Doyo */,
+				3BCE251417D71C9F00C9ABC1 /* Frameworks */,
+				3BCE251317D71C9F00C9ABC1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3BCE251317D71C9F00C9ABC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3BCE251217D71C9F00C9ABC1 /* Doyo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3BCE251417D71C9F00C9ABC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BCE251517D71C9F00C9ABC1 /* UIKit.framework */,
+				3BCE251717D71C9F00C9ABC1 /* Foundation.framework */,
+				3BCE251917D71C9F00C9ABC1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3BCE251B17D71CA000C9ABC1 /* Doyo */ = {
+			isa = PBXGroup;
+			children = (
+				3BCE252417D71CA000C9ABC1 /* DYAppDelegate.h */,
+				3BCE252517D71CA000C9ABC1 /* DYAppDelegate.m */,
+				3BCE252D17D71CA000C9ABC1 /* DYViewController.h */,
+				3BCE252E17D71CA000C9ABC1 /* DYViewController.m */,
+				3BCE253017D71CA000C9ABC1 /* DYViewController.xib */,
+				3BCE251C17D71CA000C9ABC1 /* Supporting Files */,
+			);
+			path = Doyo;
+			sourceTree = "<group>";
+		};
+		3BCE251C17D71CA000C9ABC1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3BCE251D17D71CA000C9ABC1 /* Doyo-Info.plist */,
+				3BCE251E17D71CA000C9ABC1 /* InfoPlist.strings */,
+				3BCE252117D71CA000C9ABC1 /* main.m */,
+				3BCE252317D71CA000C9ABC1 /* Doyo-Prefix.pch */,
+				3BCE252717D71CA000C9ABC1 /* Default.png */,
+				3BCE252917D71CA000C9ABC1 /* Default@2x.png */,
+				3BCE252B17D71CA000C9ABC1 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3BCE251117D71C9F00C9ABC1 /* Doyo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3BCE253517D71CA000C9ABC1 /* Build configuration list for PBXNativeTarget "Doyo" */;
+			buildPhases = (
+				3BCE250E17D71C9F00C9ABC1 /* Sources */,
+				3BCE250F17D71C9F00C9ABC1 /* Frameworks */,
+				3BCE251017D71C9F00C9ABC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Doyo;
+			productName = Doyo;
+			productReference = 3BCE251217D71C9F00C9ABC1 /* Doyo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3BCE250A17D71C9F00C9ABC1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DY;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "小田 祐万";
+			};
+			buildConfigurationList = 3BCE250D17D71C9F00C9ABC1 /* Build configuration list for PBXProject "Doyo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3BCE250917D71C9F00C9ABC1;
+			productRefGroup = 3BCE251317D71C9F00C9ABC1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3BCE251117D71C9F00C9ABC1 /* Doyo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3BCE251017D71C9F00C9ABC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BCE252017D71CA000C9ABC1 /* InfoPlist.strings in Resources */,
+				3BCE252817D71CA000C9ABC1 /* Default.png in Resources */,
+				3BCE252A17D71CA000C9ABC1 /* Default@2x.png in Resources */,
+				3BCE252C17D71CA000C9ABC1 /* Default-568h@2x.png in Resources */,
+				3BCE253217D71CA000C9ABC1 /* DYViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3BCE250E17D71C9F00C9ABC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BCE252217D71CA000C9ABC1 /* main.m in Sources */,
+				3BCE252617D71CA000C9ABC1 /* DYAppDelegate.m in Sources */,
+				3BCE252F17D71CA000C9ABC1 /* DYViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3BCE251E17D71CA000C9ABC1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BCE251F17D71CA000C9ABC1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3BCE253017D71CA000C9ABC1 /* DYViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BCE253117D71CA000C9ABC1 /* en */,
+			);
+			name = DYViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3BCE253317D71CA000C9ABC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3BCE253417D71CA000C9ABC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3BCE253617D71CA000C9ABC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Doyo/Doyo-Prefix.pch";
+				INFOPLIST_FILE = "Doyo/Doyo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3BCE253717D71CA000C9ABC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Doyo/Doyo-Prefix.pch";
+				INFOPLIST_FILE = "Doyo/Doyo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3BCE250D17D71C9F00C9ABC1 /* Build configuration list for PBXProject "Doyo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3BCE253317D71CA000C9ABC1 /* Debug */,
+				3BCE253417D71CA000C9ABC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3BCE253517D71CA000C9ABC1 /* Build configuration list for PBXNativeTarget "Doyo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3BCE253617D71CA000C9ABC1 /* Debug */,
+				3BCE253717D71CA000C9ABC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3BCE250A17D71C9F00C9ABC1 /* Project object */;
+}
