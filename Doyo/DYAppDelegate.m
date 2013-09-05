@@ -10,7 +10,7 @@
 
 #import "DYViewController.h"
 
-#import "DYTLViewController.h"
+#import "DYOTLViewController.h"
 #import "DYTopicViewController.h"
 #import "DYLogViewController.h"
 #import "DYProfileViewController.h"
@@ -27,7 +27,7 @@
     
     UITabBarController *tabCtl = [[UITabBarController alloc] init];
     
-    DYTLViewController *tlCtl = [[DYTLViewController alloc] init];
+    DYOTLViewController *tlCtl = [[DYOTLViewController alloc] init];
     DYTopicViewController *topicCtl = [[DYTopicViewController alloc] init];
     DYLogViewController *logCtl = [[DYLogViewController alloc] init];
     DYProfileViewController *profileCtl = [[DYProfileViewController alloc] init];
