@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BA2A78917D82680009342F9 /* DYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A78817D8267F009342F9 /* DYCell.m */; };
+		3BA2A78C17D83F56009342F9 /* DYManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A78B17D83F56009342F9 /* DYManager.m */; };
 		3BCE251617D71C9F00C9ABC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251517D71C9F00C9ABC1 /* UIKit.framework */; };
 		3BCE251817D71C9F00C9ABC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251717D71C9F00C9ABC1 /* Foundation.framework */; };
 		3BCE251A17D71C9F00C9ABC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251917D71C9F00C9ABC1 /* CoreGraphics.framework */; };
@@ -18,9 +20,25 @@
 		3BCE252C17D71CA000C9ABC1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE252B17D71CA000C9ABC1 /* Default-568h@2x.png */; };
 		3BCE252F17D71CA000C9ABC1 /* DYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE252E17D71CA000C9ABC1 /* DYViewController.m */; };
 		3BCE253217D71CA000C9ABC1 /* DYViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE253017D71CA000C9ABC1 /* DYViewController.xib */; };
+		3BF14E5817D8197600352727 /* DYTLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF14E5617D8197600352727 /* DYTLViewController.m */; };
+		3BF14E5917D8197600352727 /* DYTLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF14E5717D8197600352727 /* DYTLViewController.xib */; };
+		3BF14E5D17D81DC500352727 /* DYTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF14E5B17D81DC500352727 /* DYTopicViewController.m */; };
+		3BF14E5E17D81DC500352727 /* DYTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF14E5C17D81DC500352727 /* DYTopicViewController.xib */; };
+		3BF14E6217D81DDD00352727 /* DYLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF14E6017D81DDD00352727 /* DYLogViewController.m */; };
+		3BF14E6317D81DDD00352727 /* DYLogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF14E6117D81DDD00352727 /* DYLogViewController.xib */; };
+		3BF14E6717D81DF500352727 /* DYProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF14E6517D81DF500352727 /* DYProfileViewController.m */; };
+		3BF14E6817D81DF500352727 /* DYProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF14E6617D81DF500352727 /* DYProfileViewController.xib */; };
+		3BF14E6C17D81E8F00352727 /* DYCommentPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF14E6A17D81E8F00352727 /* DYCommentPostViewController.m */; };
+		3BF14E6D17D81E8F00352727 /* DYCommentPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF14E6B17D81E8F00352727 /* DYCommentPostViewController.xib */; };
+		3BF14E7117D81EAD00352727 /* DYTopicPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF14E6F17D81EAD00352727 /* DYTopicPostViewController.m */; };
+		3BF14E7217D81EAD00352727 /* DYTopicPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF14E7017D81EAD00352727 /* DYTopicPostViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BA2A78717D8267F009342F9 /* DYCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCell.h; sourceTree = "<group>"; };
+		3BA2A78817D8267F009342F9 /* DYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCell.m; sourceTree = "<group>"; };
+		3BA2A78A17D83F56009342F9 /* DYManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYManager.h; sourceTree = "<group>"; };
+		3BA2A78B17D83F56009342F9 /* DYManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYManager.m; sourceTree = "<group>"; };
 		3BCE251217D71C9F00C9ABC1 /* Doyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCE251517D71C9F00C9ABC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3BCE251717D71C9F00C9ABC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,6 +55,24 @@
 		3BCE252D17D71CA000C9ABC1 /* DYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYViewController.h; sourceTree = "<group>"; };
 		3BCE252E17D71CA000C9ABC1 /* DYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYViewController.m; sourceTree = "<group>"; };
 		3BCE253117D71CA000C9ABC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DYViewController.xib; sourceTree = "<group>"; };
+		3BF14E5517D8197600352727 /* DYTLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYTLViewController.h; sourceTree = "<group>"; };
+		3BF14E5617D8197600352727 /* DYTLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYTLViewController.m; sourceTree = "<group>"; };
+		3BF14E5717D8197600352727 /* DYTLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYTLViewController.xib; sourceTree = "<group>"; };
+		3BF14E5A17D81DC500352727 /* DYTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYTopicViewController.h; sourceTree = "<group>"; };
+		3BF14E5B17D81DC500352727 /* DYTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYTopicViewController.m; sourceTree = "<group>"; };
+		3BF14E5C17D81DC500352727 /* DYTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYTopicViewController.xib; sourceTree = "<group>"; };
+		3BF14E5F17D81DDD00352727 /* DYLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYLogViewController.h; sourceTree = "<group>"; };
+		3BF14E6017D81DDD00352727 /* DYLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYLogViewController.m; sourceTree = "<group>"; };
+		3BF14E6117D81DDD00352727 /* DYLogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYLogViewController.xib; sourceTree = "<group>"; };
+		3BF14E6417D81DF400352727 /* DYProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYProfileViewController.h; sourceTree = "<group>"; };
+		3BF14E6517D81DF500352727 /* DYProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYProfileViewController.m; sourceTree = "<group>"; };
+		3BF14E6617D81DF500352727 /* DYProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYProfileViewController.xib; sourceTree = "<group>"; };
+		3BF14E6917D81E8F00352727 /* DYCommentPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCommentPostViewController.h; sourceTree = "<group>"; };
+		3BF14E6A17D81E8F00352727 /* DYCommentPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCommentPostViewController.m; sourceTree = "<group>"; };
+		3BF14E6B17D81E8F00352727 /* DYCommentPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYCommentPostViewController.xib; sourceTree = "<group>"; };
+		3BF14E6E17D81EAD00352727 /* DYTopicPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYTopicPostViewController.h; sourceTree = "<group>"; };
+		3BF14E6F17D81EAD00352727 /* DYTopicPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYTopicPostViewController.m; sourceTree = "<group>"; };
+		3BF14E7017D81EAD00352727 /* DYTopicPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYTopicPostViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +124,28 @@
 				3BCE252D17D71CA000C9ABC1 /* DYViewController.h */,
 				3BCE252E17D71CA000C9ABC1 /* DYViewController.m */,
 				3BCE253017D71CA000C9ABC1 /* DYViewController.xib */,
+				3BA2A78A17D83F56009342F9 /* DYManager.h */,
+				3BA2A78B17D83F56009342F9 /* DYManager.m */,
+				3BA2A78717D8267F009342F9 /* DYCell.h */,
+				3BA2A78817D8267F009342F9 /* DYCell.m */,
+				3BF14E5517D8197600352727 /* DYTLViewController.h */,
+				3BF14E5617D8197600352727 /* DYTLViewController.m */,
+				3BF14E5717D8197600352727 /* DYTLViewController.xib */,
+				3BF14E5A17D81DC500352727 /* DYTopicViewController.h */,
+				3BF14E5B17D81DC500352727 /* DYTopicViewController.m */,
+				3BF14E5C17D81DC500352727 /* DYTopicViewController.xib */,
+				3BF14E5F17D81DDD00352727 /* DYLogViewController.h */,
+				3BF14E6017D81DDD00352727 /* DYLogViewController.m */,
+				3BF14E6117D81DDD00352727 /* DYLogViewController.xib */,
+				3BF14E6417D81DF400352727 /* DYProfileViewController.h */,
+				3BF14E6517D81DF500352727 /* DYProfileViewController.m */,
+				3BF14E6617D81DF500352727 /* DYProfileViewController.xib */,
+				3BF14E6917D81E8F00352727 /* DYCommentPostViewController.h */,
+				3BF14E6A17D81E8F00352727 /* DYCommentPostViewController.m */,
+				3BF14E6B17D81E8F00352727 /* DYCommentPostViewController.xib */,
+				3BF14E6E17D81EAD00352727 /* DYTopicPostViewController.h */,
+				3BF14E6F17D81EAD00352727 /* DYTopicPostViewController.m */,
+				3BF14E7017D81EAD00352727 /* DYTopicPostViewController.xib */,
 				3BCE251C17D71CA000C9ABC1 /* Supporting Files */,
 			);
 			path = Doyo;
@@ -164,6 +222,12 @@
 				3BCE252A17D71CA000C9ABC1 /* Default@2x.png in Resources */,
 				3BCE252C17D71CA000C9ABC1 /* Default-568h@2x.png in Resources */,
 				3BCE253217D71CA000C9ABC1 /* DYViewController.xib in Resources */,
+				3BF14E5917D8197600352727 /* DYTLViewController.xib in Resources */,
+				3BF14E5E17D81DC500352727 /* DYTopicViewController.xib in Resources */,
+				3BF14E6317D81DDD00352727 /* DYLogViewController.xib in Resources */,
+				3BF14E6817D81DF500352727 /* DYProfileViewController.xib in Resources */,
+				3BF14E6D17D81E8F00352727 /* DYCommentPostViewController.xib in Resources */,
+				3BF14E7217D81EAD00352727 /* DYTopicPostViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +241,14 @@
 				3BCE252217D71CA000C9ABC1 /* main.m in Sources */,
 				3BCE252617D71CA000C9ABC1 /* DYAppDelegate.m in Sources */,
 				3BCE252F17D71CA000C9ABC1 /* DYViewController.m in Sources */,
+				3BF14E5817D8197600352727 /* DYTLViewController.m in Sources */,
+				3BF14E5D17D81DC500352727 /* DYTopicViewController.m in Sources */,
+				3BF14E6217D81DDD00352727 /* DYLogViewController.m in Sources */,
+				3BF14E6717D81DF500352727 /* DYProfileViewController.m in Sources */,
+				3BF14E6C17D81E8F00352727 /* DYCommentPostViewController.m in Sources */,
+				3BF14E7117D81EAD00352727 /* DYTopicPostViewController.m in Sources */,
+				3BA2A78917D82680009342F9 /* DYCell.m in Sources */,
+				3BA2A78C17D83F56009342F9 /* DYManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +371,7 @@
 				3BCE253717D71CA000C9ABC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
