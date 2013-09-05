@@ -11,3 +11,13 @@
 @interface DYCell : UITableViewCell
 
 @end
+
+@interface DYTLCell : UITableViewCell
+
+@property (nonatomic, retain) UIImageView *iconImgView;
+@property (nonatomic, retain) UILabel *nameLbl;
+@property (nonatomic, retain) UILabel *contentLbl;
+
+- (void)reflesh;
+
+@end

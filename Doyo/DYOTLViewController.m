@@ -9,6 +9,7 @@
 #import "DYOTLViewController.h"
 #import "DYCell.h"
 #import "DYManager.h"
+#import "DYModel.h"
 
 @interface DYOTLViewController ()
 
@@ -42,8 +43,55 @@
     
     
     
-    commentArray = [[NSMutableArray alloc] initWithArray:@[@"hello", @"hora!!!!", @"こんにちわーーーーー", @"もーーーーー！"]];
-
+    //commentArray = [[NSMutableArray alloc] initWithArray:@[@"hello", @"hora!!!!", @"こんにちわーーーーー", @"もーーーーー！"]];
+    
+    
+    
+    NSArray *key1 = [NSArray arrayWithObjects:@"name", @"content", nil];
+    NSArray *value1 =
+    [NSArray arrayWithObjects:@"yuma", @"helloooooooooooo", nil];
+    NSDictionary *dic1 = [NSDictionary dictionaryWithObjects:value1 forKeys:key1];
+    
+    NSArray *key2 = [NSArray arrayWithObjects:@"name", @"content", nil];
+    NSArray *value2 =
+    [NSArray arrayWithObjects:@"kazunori", @"horaaaaaaaaa", nil];
+    NSDictionary *dic2 = [NSDictionary dictionaryWithObjects:value2 forKeys:key2];
+    
+    NSArray *key3 = [NSArray arrayWithObjects:@"name", @"content", nil];
+    NSArray *value3 =
+    [NSArray arrayWithObjects:@"darekaaaa", @"こんにちはーーーーーーーー", nil];
+    NSDictionary *dic3 = [NSDictionary dictionaryWithObjects:value3 forKeys:key3];
+    
+    NSArray *key4 = [NSArray arrayWithObjects:@"name", @"content", nil];
+    NSArray *value4 =
+    [NSArray arrayWithObjects:@"uooooooooo", @"paoooooonnnnn", nil];
+    NSDictionary *dic4 = [NSDictionary dictionaryWithObjects:value4 forKeys:key4];
+    
+    NSArray *key5 = [NSArray arrayWithObjects:@"name", @"content", nil];
+    NSArray *value5 =
+    [NSArray arrayWithObjects:@"nayyyyyyyyyyyyyyyyyyy", @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", nil];
+    NSDictionary *dic5 = [NSDictionary dictionaryWithObjects:value5 forKeys:key5];
+    
+    NSArray *key6 = [NSArray arrayWithObjects:@"name", @"content", nil];
+    NSArray *value6 =
+    [NSArray arrayWithObjects:@"uooooooooo", @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", nil];
+    NSDictionary *dic6 = [NSDictionary dictionaryWithObjects:value6 forKeys:key6];
+    
+    NSArray *key7 = [NSArray arrayWithObjects:@"name", @"content", nil];
+    NSArray *value7 =
+    [NSArray arrayWithObjects:@"uooooooooo", @"1111111111111111111111111111111111111111111111111111111111111111111111111112222gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggl", nil];
+    NSDictionary *dic7 = [NSDictionary dictionaryWithObjects:value7 forKeys:key7];
+    
+    NSArray *key8 = [NSArray arrayWithObjects:@"name", @"content", nil];
+    NSArray *value8 =
+    [NSArray arrayWithObjects:@"yuma", @" ", nil];
+    NSDictionary *dic8 = [NSDictionary dictionaryWithObjects:value8 forKeys:key8];
+    
+    commentArray = [[NSMutableArray alloc] initWithArray:@[dic1, dic2, dic3, dic4, dic5, dic6, dic7, dic8]];
+    
+    
+    //DYModel *model = [[DYModel alloc] init];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,15 +116,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    DYCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    DYTLCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[DYCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
+        cell = [[DYTLCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    else {
+        [cell reflesh];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [commentArray objectAtIndex:indexPath.row]];
+    
+    //cell.textLabel.text = [NSString stringWithFormat:@"%@", [commentArray objectAtIndex:indexPath.row]];
+    
+    DYModel *model = [[DYModel alloc] initWithDictionary:[commentArray objectAtIndex:indexPath.row]];
+    cell.nameLbl.text = model.nameStr;
+    cell.contentLbl.text = model.contentStr;
+    [cell.contentLbl sizeToFit];
+    
     
     return cell;
 }
@@ -95,7 +151,14 @@
      //NSLog(@"height::%d::%f", indexPath.row, height);
      //return 410.0;
      */
-    return 120.0;
+    
+    DYModel *model = [[DYModel alloc] initWithDictionary:[commentArray objectAtIndex:indexPath.row]];
+    CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
+                                          constrainedToSize:CGSizeMake(300, SIZE_MAX)
+                                              lineBreakMode:NSLineBreakByWordWrapping];
+    
+    NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
+    return contentTextSize.height + 75.0;
 }
 
 /*
@@ -142,7 +205,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
 }
 
 @end
