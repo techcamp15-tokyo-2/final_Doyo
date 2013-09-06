@@ -117,14 +117,6 @@
         [self.contentView addSubview:_nameLbl];
         _nameLbl.backgroundColor = [UIColor redColor];
         
-        _pointLbl = [[UILabel alloc] initWithFrame:CGRectMake(_nameLbl.frame.origin.x + _nameLbl.frame.size.width + 30,
-                                                              _iconImgView.frame.origin.y,
-                                                              40, 40)];
-        _pointLbl.font = [UIFont boldSystemFontOfSize:14.0];
-        _pointLbl.textAlignment = NSTextAlignmentCenter;
-        [self.contentView addSubview:_pointLbl];
-        _pointLbl.backgroundColor = [UIColor brownColor];
-        
         /*
         _rankLbl = [[UILabel alloc] initWithFrame:CGRectMake(280, 10, 30, 30)];
         _rankLbl.backgroundColor = [UIColor redColor];
@@ -140,9 +132,27 @@
         [self.contentView addSubview:_titleLbl];
         _titleLbl.backgroundColor = [UIColor lightGrayColor];
         
+        _niceBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [_niceBtn setTitle:@"nice" forState:UIControlStateNormal];
+        [_niceBtn addTarget:self action:@selector(niceBtnTap:) forControlEvents:UIControlEventTouchUpInside];
+        _niceBtn.frame = CGRectMake(70, _titleLbl.frame.origin.y + _titleLbl.frame.size.height + 10, 40, 40);
+        [self.contentView addSubview:_niceBtn];
+        
+        _pointLbl = [[UILabel alloc] initWithFrame:CGRectMake(_niceBtn.frame.origin.x + _niceBtn.frame.size.width + 80,
+                                                              _titleLbl.frame.origin.y + _titleLbl.frame.size.height + 10,
+                                                              40, 40)];
+        _pointLbl.font = [UIFont boldSystemFontOfSize:14.0];
+        _pointLbl.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:_pointLbl];
+        _pointLbl.backgroundColor = [UIColor brownColor];
         
     }
     return self;
+}
+
+-(void)niceBtnTap:(UIButton*)sender
+{
+    NSLog(@"niceBtn");
 }
 
 -(void)refresh
@@ -151,6 +161,12 @@
         [_titleLbl removeFromSuperview];
         _titleLbl = nil;
     }
+    /*
+    if (_niceBtn) {
+        [_niceBtn removeFromSuperview];
+        _niceBtn = nil;
+    }
+    */
     
     _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(10, _iconImgView.frame.origin.y + _iconImgView.frame.size.height + 10
                                                           ,250, 50)];
@@ -159,6 +175,14 @@
     _titleLbl.font = [UIFont boldSystemFontOfSize:14.0];
     [self.contentView addSubview:_titleLbl];
     _titleLbl.backgroundColor = [UIColor lightGrayColor];
+    
+    /*
+    _niceBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_niceBtn setTitle:@"nice" forState:UIControlStateNormal];
+    [_niceBtn addTarget:self action:@selector(niceBtnTap:) forControlEvents:UIControlEventTouchUpInside];
+    _niceBtn.frame = CGRectMake(30, _titleLbl.frame.origin.y + _titleLbl.frame.size.height + 10, 40, 40);
+    [self.contentView addSubview:_niceBtn];
+     */
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

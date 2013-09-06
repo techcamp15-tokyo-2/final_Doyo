@@ -30,6 +30,7 @@
 @property (nonatomic, retain) UILabel *nameLbl;
 @property (nonatomic, retain) UILabel *rankLbl;
 @property (nonatomic, retain) UILabel *pointLbl;
+@property (nonatomic, retain) UIButton *niceBtn;
 
 -(void)refresh;
 

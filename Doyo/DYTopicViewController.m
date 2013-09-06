@@ -171,6 +171,10 @@
             [cell.titleLbl sizeToFit];
             cell.nameLbl.text = model.nameStr;
             cell.pointLbl.text = [NSString stringWithFormat:@"%d", model.point];
+            cell.niceBtn.frame = CGRectMake(70, cell.titleLbl.frame.origin.y + cell.titleLbl.frame.size.height + 10, 40, 40);
+            cell.pointLbl.frame = CGRectMake(cell.niceBtn.frame.origin.x + cell.niceBtn.frame.size.width + 80,
+                                             cell.titleLbl.frame.origin.y + cell.titleLbl.frame.size.height + 10,
+                                             40, 40);
             break;
         }
         case 1:
@@ -181,14 +185,17 @@
             cell.nameLbl.text = model.nameStr;
             cell.pointLbl.text = [NSString stringWithFormat:@"%d", model.point];
             cell.rankLbl.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+            
+            cell.niceBtn.frame = CGRectMake(70, cell.titleLbl.frame.origin.y + cell.titleLbl.frame.size.height + 10, 40, 40);
+            cell.pointLbl.frame = CGRectMake(cell.niceBtn.frame.origin.x + cell.niceBtn.frame.size.width + 80,
+                                             cell.titleLbl.frame.origin.y + cell.titleLbl.frame.size.height + 10,
+                                             40, 40);
             break;
         }
             
         default:
             break;
     }
-    
-    
     
     return cell;
 }
@@ -203,7 +210,7 @@
             CGSize size = [model.titleStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                      constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                          lineBreakMode:NSLineBreakByWordWrapping];
-            return size.height + 70.0;
+            return size.height + 120.0;
             break;
         }
         case 1:
@@ -212,7 +219,7 @@
             CGSize size = [model.titleStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                      constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                          lineBreakMode:NSLineBreakByWordWrapping];
-            return size.height + 70.0;
+            return size.height + 120.0;
             break;
         }
         default:
