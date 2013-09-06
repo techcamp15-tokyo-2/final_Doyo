@@ -399,7 +399,7 @@
     int strCount = MIN(str.length, 80);
     NSLog(@"strCount:%d", strCount);
     
-    if (_textField.text.length <= 0 && _textField.text.length > 80) {
+    if (_textField.text.length <= 0 || _textField.text.length > 80) {
         postBtn.enabled = NO;
     }else {
         postBtn.enabled = YES;
@@ -428,7 +428,7 @@
         textView.text = [str substringToIndex:80];
     }
     
-    if (_textField.text.length <= 0 && _textField.text.length > 80) {
+    if (_textField.text.length <= 0 || _textField.text.length > 80) {
         postBtn.enabled = NO;
     }else {
         postBtn.enabled = YES;

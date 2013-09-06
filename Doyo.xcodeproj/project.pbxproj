@@ -10,9 +10,10 @@
 		3B428C8C17D992B100A6DB3C /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B428C8917D992B100A6DB3C /* SVSegmentedControl.m */; };
 		3B428C8D17D992B100A6DB3C /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B428C8B17D992B100A6DB3C /* SVSegmentedThumb.m */; };
 		3B428C9017D9930C00A6DB3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B428C8E17D992F900A6DB3C /* QuartzCore.framework */; };
+		3B5E231717D9C014008C8D14 /* DYTopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E231517D9C014008C8D14 /* DYTopicModel.m */; };
+		3B5E231817D9C014008C8D14 /* DYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E231617D9C014008C8D14 /* DYModel.m */; };
 		3BA2A78917D82680009342F9 /* DYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A78817D8267F009342F9 /* DYCell.m */; };
 		3BA2A78C17D83F56009342F9 /* DYManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A78B17D83F56009342F9 /* DYManager.m */; };
-		3BA2A79F17D85859009342F9 /* DYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A79E17D85859009342F9 /* DYModel.m */; };
 		3BCE251617D71C9F00C9ABC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251517D71C9F00C9ABC1 /* UIKit.framework */; };
 		3BCE251817D71C9F00C9ABC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251717D71C9F00C9ABC1 /* Foundation.framework */; };
 		3BCE251A17D71C9F00C9ABC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251917D71C9F00C9ABC1 /* CoreGraphics.framework */; };
@@ -44,12 +45,14 @@
 		3B428C8A17D992B100A6DB3C /* SVSegmentedThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedThumb.h; sourceTree = "<group>"; };
 		3B428C8B17D992B100A6DB3C /* SVSegmentedThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedThumb.m; sourceTree = "<group>"; };
 		3B428C8E17D992F900A6DB3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3B5E231317D9C014008C8D14 /* DYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DYModel.h; path = Model/DYModel.h; sourceTree = "<group>"; };
+		3B5E231417D9C014008C8D14 /* DYTopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DYTopicModel.h; path = Model/DYTopicModel.h; sourceTree = "<group>"; };
+		3B5E231517D9C014008C8D14 /* DYTopicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DYTopicModel.m; path = Model/DYTopicModel.m; sourceTree = "<group>"; };
+		3B5E231617D9C014008C8D14 /* DYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DYModel.m; path = Model/DYModel.m; sourceTree = "<group>"; };
 		3BA2A78717D8267F009342F9 /* DYCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCell.h; sourceTree = "<group>"; };
 		3BA2A78817D8267F009342F9 /* DYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCell.m; sourceTree = "<group>"; };
 		3BA2A78A17D83F56009342F9 /* DYManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYManager.h; sourceTree = "<group>"; };
 		3BA2A78B17D83F56009342F9 /* DYManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYManager.m; sourceTree = "<group>"; };
-		3BA2A79D17D85858009342F9 /* DYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYModel.h; sourceTree = "<group>"; };
-		3BA2A79E17D85859009342F9 /* DYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYModel.m; sourceTree = "<group>"; };
 		3BCE251217D71C9F00C9ABC1 /* Doyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCE251517D71C9F00C9ABC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3BCE251717D71C9F00C9ABC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,6 +115,17 @@
 			path = SVSegmentedControl;
 			sourceTree = "<group>";
 		};
+		3B5E231217D9C001008C8D14 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B5E231317D9C014008C8D14 /* DYModel.h */,
+				3B5E231617D9C014008C8D14 /* DYModel.m */,
+				3B5E231417D9C014008C8D14 /* DYTopicModel.h */,
+				3B5E231517D9C014008C8D14 /* DYTopicModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		3BCE250917D71C9F00C9ABC1 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				3B428C8717D992B100A6DB3C /* SVSegmentedControl */,
+				3B5E231217D9C001008C8D14 /* Model */,
 				3BCE252417D71CA000C9ABC1 /* DYAppDelegate.h */,
 				3BCE252517D71CA000C9ABC1 /* DYAppDelegate.m */,
 				3BCE252D17D71CA000C9ABC1 /* DYViewController.h */,
@@ -151,8 +166,6 @@
 				3BCE253017D71CA000C9ABC1 /* DYViewController.xib */,
 				3BA2A78A17D83F56009342F9 /* DYManager.h */,
 				3BA2A78B17D83F56009342F9 /* DYManager.m */,
-				3BA2A79D17D85858009342F9 /* DYModel.h */,
-				3BA2A79E17D85859009342F9 /* DYModel.m */,
 				3BA2A78717D8267F009342F9 /* DYCell.h */,
 				3BA2A78817D8267F009342F9 /* DYCell.m */,
 				3BE20BCB17D8D90B001B3D85 /* DYTLViewController.h */,
@@ -275,10 +288,11 @@
 				3BF14E7117D81EAD00352727 /* DYTopicPostViewController.m in Sources */,
 				3BA2A78917D82680009342F9 /* DYCell.m in Sources */,
 				3BA2A78C17D83F56009342F9 /* DYManager.m in Sources */,
-				3BA2A79F17D85859009342F9 /* DYModel.m in Sources */,
 				3BE20BCE17D8D90B001B3D85 /* DYTLViewController.m in Sources */,
 				3B428C8C17D992B100A6DB3C /* SVSegmentedControl.m in Sources */,
 				3B428C8D17D992B100A6DB3C /* SVSegmentedThumb.m in Sources */,
+				3B5E231717D9C014008C8D14 /* DYTopicModel.m in Sources */,
+				3B5E231817D9C014008C8D14 /* DYModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

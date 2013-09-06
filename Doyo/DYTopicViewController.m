@@ -9,6 +9,8 @@
 #import "DYTopicViewController.h"
 #import "SVSegmentedControl.h"
 #import "DYTopicPostViewController.h"
+#import "DYCell.h"
+#import "DYTopicModel.h"
 
 @interface DYTopicViewController ()
 {
@@ -71,8 +73,30 @@
 
 -(void)createArray
 {
-    newArray = [NSMutableArray arrayWithArray:@[@"a", @"b", @"c", @"d", @"e"]];
-    rankingArray = [NSMutableArray arrayWithArray:@[@"hello", @"こんにちはー", @"oooooaaaaa", @"bbbbbbbbbbbbb", @"ccccc"]];
+    //newArray = [NSMutableArray arrayWithArray:@[@"a", @"b", @"c", @"d", @"e"]];
+    //rankingArray = [NSMutableArray arrayWithArray:@[@"hello", @"こんにちはー", @"oooooaaaaa", @"bbbbbbbbbbbbb", @"ccccc"]];
+    
+    newArray = [[NSMutableArray alloc] init];
+    rankingArray = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < 10; i++) {
+        DYTopicModel *model = [[DYTopicModel alloc] init];
+        model.titleStr = [NSString stringWithFormat:@"%dたいとるだーーー！", i];
+        model.nameStr = [NSString stringWithFormat:@"%d様だーー！", i];
+        model.point = i * arc4random() %10;
+        
+        [newArray addObject:model];
+    }
+    
+    for (int i = 10; i > 0; i--) {
+        DYTopicModel *model = [[DYTopicModel alloc] init];
+        model.titleStr = [NSString stringWithFormat:@"%dっていうタイトルだよ", i];
+        model.nameStr = [NSString stringWithFormat:@"%dなまえー", i];
+        model.point = i;
+        
+        [rankingArray addObject:model];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,9 +153,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    DYTopicCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[DYTopicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }else {
+        [cell refresh];
     }
     
     
@@ -139,11 +165,25 @@
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", [newArray objectAtIndex:indexPath.row]];
+        {
+            DYTopicModel *model = [newArray objectAtIndex:indexPath.row];
+            cell.titleLbl.text = model.titleStr;
+            [cell.titleLbl sizeToFit];
+            cell.nameLbl.text = model.nameStr;
+            cell.pointLbl.text = [NSString stringWithFormat:@"%d", model.point];
             break;
+        }
         case 1:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", [rankingArray objectAtIndex:indexPath.row]];
+        {
+            DYTopicModel *model = [rankingArray objectAtIndex:indexPath.row];
+            cell.titleLbl.text = model.titleStr;
+            [cell.titleLbl sizeToFit];
+            cell.nameLbl.text = model.nameStr;
+            cell.pointLbl.text = [NSString stringWithFormat:@"%d", model.point];
+            cell.rankLbl.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
             break;
+        }
+            
         default:
             break;
     }
@@ -155,7 +195,33 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50.0;
+    
+    switch (indexPath.section) {
+        case 0:
+        {
+            DYTopicModel *model = [newArray objectAtIndex:indexPath.row];
+            CGSize size = [model.titleStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
+                                     constrainedToSize:CGSizeMake(300, SIZE_MAX)
+                                         lineBreakMode:NSLineBreakByWordWrapping];
+            return size.height + 70.0;
+            break;
+        }
+        case 1:
+        {
+            DYTopicModel *model = [rankingArray objectAtIndex:indexPath.row];
+            CGSize size = [model.titleStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
+                                     constrainedToSize:CGSizeMake(300, SIZE_MAX)
+                                         lineBreakMode:NSLineBreakByWordWrapping];
+            return size.height + 70.0;
+            break;
+        }
+        default:
+            return 100.0;
+            break;
+    }
+    
+    
+    //return 150.0;
 }
 
 @end

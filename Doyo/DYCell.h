@@ -21,3 +21,17 @@
 - (void)reflesh;
 
 @end
+
+
+@interface DYTopicCell : UITableViewCell
+
+@property (nonatomic, retain) UILabel *titleLbl;
+@property (nonatomic, retain) UIImageView *iconImgView;
+@property (nonatomic, retain) UILabel *nameLbl;
+@property (nonatomic, retain) UILabel *rankLbl;
+@property (nonatomic, retain) UILabel *pointLbl;
+
+-(void)refresh;
+
+@end
+
