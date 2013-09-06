@@ -122,10 +122,12 @@
     */
     DYModel *model8 = [[DYModel alloc] init];
     model8.nameStr = @"kazunori";
-    model8.contentStr = @" ";
+    model8.contentStr = @"foooooooooooooo";
     
     
     commentArray = [[NSMutableArray alloc] initWithArray:@[model1, model2, model3, model4, model5, model6, model7, model8]];
+    
+    [self createArray];
     
     
     //DYModel *model = [[DYModel alloc] init];
@@ -149,12 +151,6 @@
      */
     
     _tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
-    
-    
-    
-    
-    
-    
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 459, 320, 40)];
@@ -226,6 +222,28 @@
     //singleTap.delegate = self;
     singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:singleTap];
+}
+
+-(void)createArray
+{
+    //array1 = [[NSMutableArray alloc] init];
+    array2 = [[NSMutableArray alloc] init];
+    array3 = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < 5; i++) {
+        DYModel *model = [[DYModel alloc] init];
+        model.nameStr = [NSString stringWithFormat:@"%d君", i];
+        model.contentStr = [NSString stringWithFormat:@"%dだよ", i];
+        [array2 addObject:model];
+    }
+    
+    for (int i = 0; i < 7; i++) {
+        DYModel *model = [[DYModel alloc] init];
+        model.nameStr = [NSString stringWithFormat:@"%dちゃん", i];
+        model.contentStr = [NSString stringWithFormat:@"%dざます", i];
+        [array3 addObject:model];
+    }
+    
 }
 
 -(void)onSingleTap:(UITapGestureRecognizer *)recognizer
@@ -423,13 +441,70 @@
 
 #pragma mark - Table view data source
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        view.backgroundColor = [UIColor redColor];
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, -5, 280, 30)];
+        lbl.backgroundColor = [UIColor clearColor];
+        lbl.text = @"ガソリンスタンドの溝ってなんなのよ？";
+        lbl.font = [UIFont boldSystemFontOfSize:14.0];
+        lbl.textAlignment = NSTextAlignmentCenter;
+        lbl.textColor = [UIColor whiteColor];
+        [view addSubview:lbl];
+        return view;
+    }else if (section == 1) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        view.backgroundColor = [UIColor blueColor];
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, -5, 280, 30)];
+        lbl.backgroundColor = [UIColor clearColor];
+        lbl.text = @"剛力あやめどうよ？";
+        lbl.font = [UIFont boldSystemFontOfSize:14.0];
+        lbl.textAlignment = NSTextAlignmentCenter;
+        lbl.textColor = [UIColor whiteColor];
+        [view addSubview:lbl];
+        return view;
+    }else if (section == 2) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        view.backgroundColor = [UIColor brownColor];
+        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, -5, 280, 30)];
+        lbl.backgroundColor = [UIColor clearColor];
+        lbl.text = @"オリンピックどうよ？";
+        lbl.font = [UIFont boldSystemFontOfSize:14.0];
+        lbl.textAlignment = NSTextAlignmentCenter;
+        lbl.textColor = [UIColor whiteColor];
+        [view addSubview:lbl];
+
+        return view;
+    }else {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        view.backgroundColor = [UIColor blackColor];
+        return view;
+    }
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    switch (section) {
+        case 0:
+            return commentArray.count;
+            break;
+        case 1:
+            return array2.count;
+            break;
+        case 2:
+            return array3.count;
+            break;
+        default:
+            break;
+    }
     
     return commentArray.count;
 }
@@ -449,11 +524,41 @@
     
     //cell.textLabel.text = [NSString stringWithFormat:@"%@", [commentArray objectAtIndex:indexPath.row]];
     
+    switch (indexPath.section) {
+        case 0:
+        {
+            DYModel *model = [commentArray objectAtIndex:indexPath.row];
+            cell.nameLbl.text = model.nameStr;
+            cell.contentLbl.text = model.contentStr;
+            [cell.contentLbl sizeToFit];
+        }
+            break;
+        case 1:
+        {
+            DYModel *model = [array2 objectAtIndex:indexPath.row];
+            cell.nameLbl.text = model.nameStr;
+            cell.contentLbl.text = model.contentStr;
+            [cell.contentLbl sizeToFit];
+            break;
+        }
+        case 2:
+        {
+            DYModel *model = [array3 objectAtIndex:indexPath.row];
+            cell.nameLbl.text = model.nameStr;
+            cell.contentLbl.text = model.contentStr;
+            [cell.contentLbl sizeToFit];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    /*
     DYModel *model = [commentArray objectAtIndex:indexPath.row];
     cell.nameLbl.text = model.nameStr;
     cell.contentLbl.text = model.contentStr;
     [cell.contentLbl sizeToFit];
-    
+    */
     
     return cell;
 }
@@ -473,6 +578,46 @@
      //return 410.0;
      */
     
+    switch (indexPath.section) {
+        case 0:
+        {
+            DYModel *model = [commentArray objectAtIndex:indexPath.row];
+            CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
+                                                  constrainedToSize:CGSizeMake(300, SIZE_MAX)
+                                                      lineBreakMode:NSLineBreakByWordWrapping];
+            
+            //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
+            return contentTextSize.height + 70.0;
+            break;
+        }
+        case 1:
+        {
+            DYModel *model = [array2 objectAtIndex:indexPath.row];
+            CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
+                                                  constrainedToSize:CGSizeMake(300, SIZE_MAX)
+                                                      lineBreakMode:NSLineBreakByWordWrapping];
+            
+            //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
+            return contentTextSize.height + 70.0;
+            break;
+        }
+        case 2:
+        {
+            DYModel *model = [array3 objectAtIndex:indexPath.row];
+            CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
+                                                  constrainedToSize:CGSizeMake(300, SIZE_MAX)
+                                                      lineBreakMode:NSLineBreakByWordWrapping];
+            
+            //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
+            return contentTextSize.height + 70.0;
+            break;
+
+        }
+        default:
+            return 100.0;
+            break;
+    }
+    /*
     DYModel *model = [commentArray objectAtIndex:indexPath.row];
     CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                           constrainedToSize:CGSizeMake(300, SIZE_MAX)
@@ -480,6 +625,7 @@
     
     //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
     return contentTextSize.height + 70.0;
+     */
 }
 
 /*

@@ -7,6 +7,7 @@
 //
 
 #import "DYTopicViewController.h"
+#import "SVSegmentedControl.h"
 
 @interface DYTopicViewController ()
 {
@@ -33,6 +34,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    SVSegmentedControl *sv = [[SVSegmentedControl alloc] initWithSectionTitles:@[@"new", @"ranking"]];
+    [sv addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+    [sv setSelectedSegmentIndex:0 animated:NO];
+    sv.frame = CGRectMake(0, 0, 150, 35);
+    sv.crossFadeLabelsOnDrag = YES;
+    sv.thumb.tintColor = [UIColor colorWithRed:0.999 green:0.889 blue:0.312 alpha:1.000];
+    self.navigationItem.titleView = sv;
     
     self.view.backgroundColor = [UIColor cyanColor];
     
@@ -42,17 +51,27 @@
     array = @[@"a", @"b", @"c", @"d", @"e"];
     
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [btn setTitle:@"btn" forState:UIControlStateNormal];
-    btn.frame = CGRectMake(250, 400, 50, 50);
-    [btn addTarget:self action:@selector(btnTap) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)changePage:(SVSegmentedControl*)seg
+{
+    if (seg.selectedSegmentIndex == 0) {
+        //open new
+        
+        [_tableView reloadData];
+    }else if (seg.selectedSegmentIndex == 1) {
+        //open ranking
+        
+        [_tableView reloadData];
+    }
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -78,9 +97,6 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [array objectAtIndex:indexPath.row]];
-    
-    
-    
     
     return cell;
 }

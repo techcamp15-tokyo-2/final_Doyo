@@ -30,6 +30,10 @@
     BOOL isEditing;
     
     NSString *commentPostStr;
+    
+    NSMutableArray *array1;
+    NSMutableArray *array2;
+    NSMutableArray *array3;
 }
 
 @property (nonatomic, strong) UITextView *textField;
