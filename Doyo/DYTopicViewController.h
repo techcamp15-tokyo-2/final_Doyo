@@ -10,6 +10,12 @@
 
 @interface DYTopicViewController : UIViewController
 <UITableViewDataSource, UITableViewDelegate>
+{
+    int segNum;
+    
+    NSMutableArray *newArray;
+    NSMutableArray *rankingArray;
+}
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
