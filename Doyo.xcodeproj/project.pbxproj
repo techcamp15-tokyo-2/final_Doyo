@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		3BA2A78917D82680009342F9 /* DYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A78817D8267F009342F9 /* DYCell.m */; };
 		3BA2A78C17D83F56009342F9 /* DYManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A78B17D83F56009342F9 /* DYManager.m */; };
-		3BA2A79A17D846A1009342F9 /* DYOTLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A79817D846A1009342F9 /* DYOTLViewController.m */; };
-		3BA2A79B17D846A1009342F9 /* DYOTLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA2A79917D846A1009342F9 /* DYOTLViewController.xib */; };
 		3BA2A79F17D85859009342F9 /* DYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A79E17D85859009342F9 /* DYModel.m */; };
 		3BCE251617D71C9F00C9ABC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251517D71C9F00C9ABC1 /* UIKit.framework */; };
 		3BCE251817D71C9F00C9ABC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251717D71C9F00C9ABC1 /* Foundation.framework */; };
@@ -23,6 +21,9 @@
 		3BCE252C17D71CA000C9ABC1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE252B17D71CA000C9ABC1 /* Default-568h@2x.png */; };
 		3BCE252F17D71CA000C9ABC1 /* DYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE252E17D71CA000C9ABC1 /* DYViewController.m */; };
 		3BCE253217D71CA000C9ABC1 /* DYViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE253017D71CA000C9ABC1 /* DYViewController.xib */; };
+		3BE20BCE17D8D90B001B3D85 /* DYTLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE20BCC17D8D90B001B3D85 /* DYTLViewController.m */; };
+		3BE20BCF17D8D90B001B3D85 /* DYTLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE20BCD17D8D90B001B3D85 /* DYTLViewController.xib */; };
+		3BE20BD717D9626C001B3D85 /* DYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE20BD617D9626C001B3D85 /* DYTextView.m */; };
 		3BF14E5D17D81DC500352727 /* DYTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF14E5B17D81DC500352727 /* DYTopicViewController.m */; };
 		3BF14E5E17D81DC500352727 /* DYTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BF14E5C17D81DC500352727 /* DYTopicViewController.xib */; };
 		3BF14E6217D81DDD00352727 /* DYLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF14E6017D81DDD00352727 /* DYLogViewController.m */; };
@@ -40,9 +41,6 @@
 		3BA2A78817D8267F009342F9 /* DYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCell.m; sourceTree = "<group>"; };
 		3BA2A78A17D83F56009342F9 /* DYManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYManager.h; sourceTree = "<group>"; };
 		3BA2A78B17D83F56009342F9 /* DYManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYManager.m; sourceTree = "<group>"; };
-		3BA2A79717D846A1009342F9 /* DYOTLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYOTLViewController.h; sourceTree = "<group>"; };
-		3BA2A79817D846A1009342F9 /* DYOTLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYOTLViewController.m; sourceTree = "<group>"; };
-		3BA2A79917D846A1009342F9 /* DYOTLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYOTLViewController.xib; sourceTree = "<group>"; };
 		3BA2A79D17D85858009342F9 /* DYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYModel.h; sourceTree = "<group>"; };
 		3BA2A79E17D85859009342F9 /* DYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYModel.m; sourceTree = "<group>"; };
 		3BCE251217D71C9F00C9ABC1 /* Doyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +59,11 @@
 		3BCE252D17D71CA000C9ABC1 /* DYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYViewController.h; sourceTree = "<group>"; };
 		3BCE252E17D71CA000C9ABC1 /* DYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYViewController.m; sourceTree = "<group>"; };
 		3BCE253117D71CA000C9ABC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DYViewController.xib; sourceTree = "<group>"; };
+		3BE20BCB17D8D90B001B3D85 /* DYTLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYTLViewController.h; sourceTree = "<group>"; };
+		3BE20BCC17D8D90B001B3D85 /* DYTLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYTLViewController.m; sourceTree = "<group>"; };
+		3BE20BCD17D8D90B001B3D85 /* DYTLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYTLViewController.xib; sourceTree = "<group>"; };
+		3BE20BD517D9626C001B3D85 /* DYTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYTextView.h; sourceTree = "<group>"; };
+		3BE20BD617D9626C001B3D85 /* DYTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYTextView.m; sourceTree = "<group>"; };
 		3BF14E5A17D81DC500352727 /* DYTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYTopicViewController.h; sourceTree = "<group>"; };
 		3BF14E5B17D81DC500352727 /* DYTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYTopicViewController.m; sourceTree = "<group>"; };
 		3BF14E5C17D81DC500352727 /* DYTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYTopicViewController.xib; sourceTree = "<group>"; };
@@ -133,9 +136,11 @@
 				3BA2A79E17D85859009342F9 /* DYModel.m */,
 				3BA2A78717D8267F009342F9 /* DYCell.h */,
 				3BA2A78817D8267F009342F9 /* DYCell.m */,
-				3BA2A79717D846A1009342F9 /* DYOTLViewController.h */,
-				3BA2A79817D846A1009342F9 /* DYOTLViewController.m */,
-				3BA2A79917D846A1009342F9 /* DYOTLViewController.xib */,
+				3BE20BCB17D8D90B001B3D85 /* DYTLViewController.h */,
+				3BE20BCC17D8D90B001B3D85 /* DYTLViewController.m */,
+				3BE20BCD17D8D90B001B3D85 /* DYTLViewController.xib */,
+				3BE20BD517D9626C001B3D85 /* DYTextView.h */,
+				3BE20BD617D9626C001B3D85 /* DYTextView.m */,
 				3BF14E5A17D81DC500352727 /* DYTopicViewController.h */,
 				3BF14E5B17D81DC500352727 /* DYTopicViewController.m */,
 				3BF14E5C17D81DC500352727 /* DYTopicViewController.xib */,
@@ -232,7 +237,7 @@
 				3BF14E6817D81DF500352727 /* DYProfileViewController.xib in Resources */,
 				3BF14E6D17D81E8F00352727 /* DYCommentPostViewController.xib in Resources */,
 				3BF14E7217D81EAD00352727 /* DYTopicPostViewController.xib in Resources */,
-				3BA2A79B17D846A1009342F9 /* DYOTLViewController.xib in Resources */,
+				3BE20BCF17D8D90B001B3D85 /* DYTLViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,8 +258,9 @@
 				3BF14E7117D81EAD00352727 /* DYTopicPostViewController.m in Sources */,
 				3BA2A78917D82680009342F9 /* DYCell.m in Sources */,
 				3BA2A78C17D83F56009342F9 /* DYManager.m in Sources */,
-				3BA2A79A17D846A1009342F9 /* DYOTLViewController.m in Sources */,
 				3BA2A79F17D85859009342F9 /* DYModel.m in Sources */,
+				3BE20BCE17D8D90B001B3D85 /* DYTLViewController.m in Sources */,
+				3BE20BD717D9626C001B3D85 /* DYTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface DYTopicViewController : UIViewController
+<UITableViewDataSource, UITableViewDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

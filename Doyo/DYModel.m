@@ -21,6 +21,26 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)coder {
+    
+    [coder encodeObject:_nameStr forKey:@"_nameStr"];
+	[coder encodeObject:_contentStr forKey:@"_contentStr"];
+    [coder encodeObject:_iconImg forKey:@"_iconImg"];
+    
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    if (self = [super init]) {
+        _nameStr = [coder decodeObjectForKey:@"_nameStr"];
+		_contentStr = [coder decodeObjectForKey:@"_contentStr"];
+        //date_str = [coder decodeObjectForKey:@"date_str"];
+        _iconImg = [coder decodeObjectForKey:@"_iconImg"];
+        
+    }
+    return self;
+}
+
+
 -(id)initWithDictionary:(NSDictionary *)d
 {
     self = [super init];

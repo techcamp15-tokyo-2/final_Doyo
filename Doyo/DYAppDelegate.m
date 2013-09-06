@@ -10,7 +10,8 @@
 
 #import "DYViewController.h"
 
-#import "DYOTLViewController.h"
+//#import "DYOTLViewController.h"
+#import "DYTLViewController.h"
 #import "DYTopicViewController.h"
 #import "DYLogViewController.h"
 #import "DYProfileViewController.h"
@@ -27,17 +28,17 @@
     
     UITabBarController *tabCtl = [[UITabBarController alloc] init];
     
-    DYOTLViewController *tlCtl = [[DYOTLViewController alloc] init];
+    DYTLViewController *tlCtl = [[DYTLViewController alloc] init];
     DYTopicViewController *topicCtl = [[DYTopicViewController alloc] init];
     DYLogViewController *logCtl = [[DYLogViewController alloc] init];
     DYProfileViewController *profileCtl = [[DYProfileViewController alloc] init];
     
-    UINavigationController *navCtl1 = [[UINavigationController alloc] initWithRootViewController:tlCtl];
+    //UINavigationController *navCtl1 = [[UINavigationController alloc] initWithRootViewController:tlCtl];
     UINavigationController *navCtl2 = [[UINavigationController alloc] initWithRootViewController:topicCtl];
     UINavigationController *navCtl3 = [[UINavigationController alloc] initWithRootViewController:logCtl];
     UINavigationController *navCtl4 = [[UINavigationController alloc] initWithRootViewController:profileCtl];
     
-    NSArray *tabArray = @[navCtl1, navCtl2, navCtl3, navCtl4];
+    NSArray *tabArray = @[tlCtl, navCtl2, navCtl3, navCtl4];
     [tabCtl setViewControllers:tabArray animated:YES];
     
     self.window.rootViewController = tabCtl;
