@@ -14,6 +14,12 @@
 		3B5E231817D9C014008C8D14 /* DYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5E231617D9C014008C8D14 /* DYModel.m */; };
 		3BA2A78917D82680009342F9 /* DYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A78817D8267F009342F9 /* DYCell.m */; };
 		3BA2A78C17D83F56009342F9 /* DYManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2A78B17D83F56009342F9 /* DYManager.m */; };
+		3BA53BE317DD8AB400800388 /* DYTwiLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA53BE117DD8AB400800388 /* DYTwiLoginViewController.m */; };
+		3BA53BE417DD8AB400800388 /* DYTwiLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA53BE217DD8AB400800388 /* DYTwiLoginViewController.xib */; };
+		3BA53BE917DD8B9E00800388 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA53BE517DD8B8700800388 /* Accounts.framework */; };
+		3BA53BEA17DD8BA500800388 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA53BE717DD8B8E00800388 /* Social.framework */; };
+		3BA53BEF17DD9F4500800388 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BA53BEC17DD9F4500800388 /* SVProgressHUD.bundle */; };
+		3BA53BF017DD9F4500800388 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA53BEE17DD9F4500800388 /* SVProgressHUD.m */; };
 		3BCE251617D71C9F00C9ABC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251517D71C9F00C9ABC1 /* UIKit.framework */; };
 		3BCE251817D71C9F00C9ABC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251717D71C9F00C9ABC1 /* Foundation.framework */; };
 		3BCE251A17D71C9F00C9ABC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCE251917D71C9F00C9ABC1 /* CoreGraphics.framework */; };
@@ -23,8 +29,6 @@
 		3BCE252817D71CA000C9ABC1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE252717D71CA000C9ABC1 /* Default.png */; };
 		3BCE252A17D71CA000C9ABC1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE252917D71CA000C9ABC1 /* Default@2x.png */; };
 		3BCE252C17D71CA000C9ABC1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE252B17D71CA000C9ABC1 /* Default-568h@2x.png */; };
-		3BCE252F17D71CA000C9ABC1 /* DYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCE252E17D71CA000C9ABC1 /* DYViewController.m */; };
-		3BCE253217D71CA000C9ABC1 /* DYViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCE253017D71CA000C9ABC1 /* DYViewController.xib */; };
 		3BE20BCE17D8D90B001B3D85 /* DYTLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE20BCC17D8D90B001B3D85 /* DYTLViewController.m */; };
 		3BE20BCF17D8D90B001B3D85 /* DYTLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE20BCD17D8D90B001B3D85 /* DYTLViewController.xib */; };
 		3BF14E5D17D81DC500352727 /* DYTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF14E5B17D81DC500352727 /* DYTopicViewController.m */; };
@@ -53,6 +57,14 @@
 		3BA2A78817D8267F009342F9 /* DYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCell.m; sourceTree = "<group>"; };
 		3BA2A78A17D83F56009342F9 /* DYManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYManager.h; sourceTree = "<group>"; };
 		3BA2A78B17D83F56009342F9 /* DYManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYManager.m; sourceTree = "<group>"; };
+		3BA53BE017DD8AB400800388 /* DYTwiLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYTwiLoginViewController.h; sourceTree = "<group>"; };
+		3BA53BE117DD8AB400800388 /* DYTwiLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYTwiLoginViewController.m; sourceTree = "<group>"; };
+		3BA53BE217DD8AB400800388 /* DYTwiLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYTwiLoginViewController.xib; sourceTree = "<group>"; };
+		3BA53BE517DD8B8700800388 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		3BA53BE717DD8B8E00800388 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		3BA53BEC17DD9F4500800388 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		3BA53BED17DD9F4500800388 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		3BA53BEE17DD9F4500800388 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		3BCE251217D71C9F00C9ABC1 /* Doyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCE251517D71C9F00C9ABC1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3BCE251717D71C9F00C9ABC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,9 +78,6 @@
 		3BCE252717D71CA000C9ABC1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3BCE252917D71CA000C9ABC1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3BCE252B17D71CA000C9ABC1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		3BCE252D17D71CA000C9ABC1 /* DYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYViewController.h; sourceTree = "<group>"; };
-		3BCE252E17D71CA000C9ABC1 /* DYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYViewController.m; sourceTree = "<group>"; };
-		3BCE253117D71CA000C9ABC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DYViewController.xib; sourceTree = "<group>"; };
 		3BE20BCB17D8D90B001B3D85 /* DYTLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYTLViewController.h; sourceTree = "<group>"; };
 		3BE20BCC17D8D90B001B3D85 /* DYTLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYTLViewController.m; sourceTree = "<group>"; };
 		3BE20BCD17D8D90B001B3D85 /* DYTLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DYTLViewController.xib; sourceTree = "<group>"; };
@@ -94,6 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BA53BEA17DD8BA500800388 /* Social.framework in Frameworks */,
+				3BA53BE917DD8B9E00800388 /* Accounts.framework in Frameworks */,
 				3B428C9017D9930C00A6DB3C /* QuartzCore.framework in Frameworks */,
 				3BCE251617D71C9F00C9ABC1 /* UIKit.framework in Frameworks */,
 				3BCE251817D71C9F00C9ABC1 /* Foundation.framework in Frameworks */,
@@ -126,6 +137,16 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		3BA53BEB17DD9F4500800388 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				3BA53BEC17DD9F4500800388 /* SVProgressHUD.bundle */,
+				3BA53BED17DD9F4500800388 /* SVProgressHUD.h */,
+				3BA53BEE17DD9F4500800388 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		3BCE250917D71C9F00C9ABC1 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +167,8 @@
 		3BCE251417D71C9F00C9ABC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BA53BE717DD8B8E00800388 /* Social.framework */,
+				3BA53BE517DD8B8700800388 /* Accounts.framework */,
 				3B428C8E17D992F900A6DB3C /* QuartzCore.framework */,
 				3BCE251517D71C9F00C9ABC1 /* UIKit.framework */,
 				3BCE251717D71C9F00C9ABC1 /* Foundation.framework */,
@@ -157,13 +180,14 @@
 		3BCE251B17D71CA000C9ABC1 /* Doyo */ = {
 			isa = PBXGroup;
 			children = (
+				3BA53BEB17DD9F4500800388 /* SVProgressHUD */,
 				3B428C8717D992B100A6DB3C /* SVSegmentedControl */,
 				3B5E231217D9C001008C8D14 /* Model */,
 				3BCE252417D71CA000C9ABC1 /* DYAppDelegate.h */,
 				3BCE252517D71CA000C9ABC1 /* DYAppDelegate.m */,
-				3BCE252D17D71CA000C9ABC1 /* DYViewController.h */,
-				3BCE252E17D71CA000C9ABC1 /* DYViewController.m */,
-				3BCE253017D71CA000C9ABC1 /* DYViewController.xib */,
+				3BA53BE017DD8AB400800388 /* DYTwiLoginViewController.h */,
+				3BA53BE117DD8AB400800388 /* DYTwiLoginViewController.m */,
+				3BA53BE217DD8AB400800388 /* DYTwiLoginViewController.xib */,
 				3BA2A78A17D83F56009342F9 /* DYManager.h */,
 				3BA2A78B17D83F56009342F9 /* DYManager.m */,
 				3BA2A78717D8267F009342F9 /* DYCell.h */,
@@ -261,13 +285,14 @@
 				3BCE252817D71CA000C9ABC1 /* Default.png in Resources */,
 				3BCE252A17D71CA000C9ABC1 /* Default@2x.png in Resources */,
 				3BCE252C17D71CA000C9ABC1 /* Default-568h@2x.png in Resources */,
-				3BCE253217D71CA000C9ABC1 /* DYViewController.xib in Resources */,
 				3BF14E5E17D81DC500352727 /* DYTopicViewController.xib in Resources */,
 				3BF14E6317D81DDD00352727 /* DYLogViewController.xib in Resources */,
 				3BF14E6817D81DF500352727 /* DYProfileViewController.xib in Resources */,
 				3BF14E6D17D81E8F00352727 /* DYCommentPostViewController.xib in Resources */,
 				3BF14E7217D81EAD00352727 /* DYTopicPostViewController.xib in Resources */,
 				3BE20BCF17D8D90B001B3D85 /* DYTLViewController.xib in Resources */,
+				3BA53BE417DD8AB400800388 /* DYTwiLoginViewController.xib in Resources */,
+				3BA53BEF17DD9F4500800388 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +305,6 @@
 			files = (
 				3BCE252217D71CA000C9ABC1 /* main.m in Sources */,
 				3BCE252617D71CA000C9ABC1 /* DYAppDelegate.m in Sources */,
-				3BCE252F17D71CA000C9ABC1 /* DYViewController.m in Sources */,
 				3BF14E5D17D81DC500352727 /* DYTopicViewController.m in Sources */,
 				3BF14E6217D81DDD00352727 /* DYLogViewController.m in Sources */,
 				3BF14E6717D81DF500352727 /* DYProfileViewController.m in Sources */,
@@ -293,6 +317,8 @@
 				3B428C8D17D992B100A6DB3C /* SVSegmentedThumb.m in Sources */,
 				3B5E231717D9C014008C8D14 /* DYTopicModel.m in Sources */,
 				3B5E231817D9C014008C8D14 /* DYModel.m in Sources */,
+				3BA53BE317DD8AB400800388 /* DYTwiLoginViewController.m in Sources */,
+				3BA53BF017DD9F4500800388 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,14 +331,6 @@
 				3BCE251F17D71CA000C9ABC1 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		3BCE253017D71CA000C9ABC1 /* DYViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3BCE253117D71CA000C9ABC1 /* en */,
-			);
-			name = DYViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

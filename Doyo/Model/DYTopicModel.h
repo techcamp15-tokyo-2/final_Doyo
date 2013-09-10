@@ -10,9 +10,11 @@
 
 @interface DYTopicModel : NSObject
 
-@property (nonatomic, retain) UIImage *iconImg;
+@property (nonatomic, retain) NSString *iconImgStr;
 @property (nonatomic, retain) NSString *nameStr;
 @property (nonatomic, retain) NSString *titleStr;
 @property int point;
+@property (nonatomic, retain) UIImage *iconImg;
+@property (nonatomic, retain) NSString *topicIDStr;
 
 @end

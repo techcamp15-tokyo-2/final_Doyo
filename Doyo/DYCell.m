@@ -7,6 +7,7 @@
 //
 
 #import "DYCell.h"
+#import "DYManager.h"
 
 @implementation DYCell
 
@@ -148,11 +149,33 @@
         
     }
     return self;
+    
 }
 
 -(void)niceBtnTap:(UIButton*)sender
 {
-    NSLog(@"niceBtn");
+    //押されたボタンの順番とtopic_ID
+    NSLog(@"niceBtn::%d::%@", sender.tag, sender.accessibilityIdentifier);
+    
+    int topic_ID = [sender.accessibilityIdentifier intValue];
+    
+    [[DYManager sharedManager] requestInsertUserTopicIDData:topic_ID Completion:^(BOOL flag) {
+        if (flag) {
+            //NSLog(@"yesyes");
+        }else {
+            //NSLog(@"nono");
+        }
+    }];
+    
+    [[DYManager sharedManager] updateTopicPointTopic_ID:topic_ID completion:^(BOOL flag) {
+        if (flag) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateTopicPoint" object:[NSNumber numberWithInt:topic_ID]];
+        }else {
+            
+        }
+    }];
+    
+    //sender.enabled = NO;
 }
 
 -(void)refresh

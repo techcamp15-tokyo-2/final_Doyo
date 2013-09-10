@@ -15,9 +15,25 @@
     
     NSMutableArray *newArray;
     NSMutableArray *rankingArray;
+    
+    BOOL isLoading;
+    BOOL isDragging;
+    
+    UIView *refreshHeaderView;
+    UIActivityIndicatorView *refreshSpinner;
+    
+    NSMutableArray *BtnArray;
+    NSMutableArray *alredyBtnArray;
+    
+    UILabel *refreshLabel;
+    NSString *textPull;
+    NSString *textRelease;
+    NSString *textLoading;
 }
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+//@property BOOL isPostFlag;
 
 @end

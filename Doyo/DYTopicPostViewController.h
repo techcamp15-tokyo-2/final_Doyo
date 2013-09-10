@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface DYTopicPostViewController : UIViewController
+<UITextViewDelegate>
+{
+    NSString *postStr;
+    UIBarButtonItem *postBtn;
+}
 
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
