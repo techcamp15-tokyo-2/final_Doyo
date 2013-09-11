@@ -12,6 +12,7 @@
 #import <Social/Social.h>
 #import "DYTwiLoginViewController.h"
 #import "SVProgressHUD.h"
+#import "DYModel.h"
 
 #define TOPIC_NEW_URL           @"http://49.212.140.71/Doyo_php/select_topic_new.php"
 #define TOPIC_RANK_URL          @"http://49.212.140.71/Doyo_php/select_topic_rank.php"
@@ -20,6 +21,9 @@
 #define UPDATE_TOPIC_POINT      @"http://49.212.140.71/Doyo_php/update_topic_point.php"
 #define INSERT_USER_TOPIC_ID    @"http://49.212.140.71/Doyo_php/insert_user_topic_ID.php"
 #define SELECT_USER_TOPIC_ID    @"http://49.212.140.71/Doyo_php/select_user_topic_ID.php"
+#define SELECT_LOG_RANK_URL     @"http://49.212.140.71/Doyo_php/select_log_rank.php"
+#define SELECT_LOG_NEW_URL      @"http://49.212.140.71/Doyo_php/select_log_new.php"
+#define SELECT_LOG_PUSH         @"http://49.212.140.71/Doyo_php/select_log_push.php"
 
 @implementation DYManager
 
@@ -40,12 +44,19 @@
         /*
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setObject:@"09dasan" forKey:@"user_ID"];
+        [ud setObject:@"ゆうまっちょだっちょ" forKey:@"name"];
+        [ud setObject:@"http://a0.twimg.com/profile_images/2498123633/image_normal.jpg" forKey:@"iconImgStr"];
         [ud synchronize];
         */
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         
-        if ([ud objectForKey:@"user_ID"]) {
+        if ([ud objectForKey:@"user_ID"] && [ud objectForKey:@"name"] && [ud objectForKey:@"iconImgStr"]) {
             _userID = [ud objectForKey:@"user_ID"];
+            _name = [ud objectForKey:@"name"];
+            _iconImgStr = [ud objectForKey:@"iconImgStr"];
+            
+            NSLog(@"userID:%@::name:%@::iconImg:%@", _userID, _name, _iconImgStr);
+            
         }else {
             //ログインビュー表示
             /*
@@ -64,8 +75,34 @@
         
         _isPostFlag = NO;
         
+        _alredyBtnArray = [NSMutableArray array];
+        [self niceArray];
+        
     }
     return self;
+}
+
+-(void)niceArray
+{
+    //一度押したボタンはもう押すことは出来ません。
+    [self requestSelectUserTopicIDDataCompletion:^(BOOL success, NSArray *array) {
+        NSLog(@"%d", success);
+        if (success) {
+            //NSLog(@"success:%@", array);
+            //[BtnArray addObjectsFromArray:array];
+            
+            
+            for (NSDictionary *d in array) {
+                //[d objectForKey:@"topic_ID"];
+                NSLog(@"%@", [d objectForKey:@"topic_ID"]);
+                [_alredyBtnArray addObject:[d objectForKey:@"topic_ID"]];
+            }
+            NSLog(@"alredyBtn:%@", _alredyBtnArray);
+            //[_tableView reloadData];
+        }else {
+            
+        }
+    }];
 }
 
 -(void)requestInsertUserTopicIDData:(int)topicID Completion:(LoadInsertUserTopicIDDataCompletion)comp
@@ -101,7 +138,7 @@
 
 -(void)requestSelectUserTopicIDDataCompletion:(LoadSelectUserTopicIDDataCompletion)comp
 {
-    [SVProgressHUD showWithStatus:@"Loading"];
+    //[SVProgressHUD showWithStatus:@"Loading"];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSURL *httpDataUrl = [NSURL URLWithString:SELECT_USER_TOPIC_ID];
@@ -249,6 +286,139 @@
     });
 }
 
+-(void)requestTopicLogDataCompletion:(LoadTopicRankDataCompletion)comp
+{
+    //[SVProgressHUD showWithStatus:@"Loading"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *httpDataUrl = [NSURL URLWithString:SELECT_LOG_RANK_URL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:httpDataUrl];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSError *e;
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&e];
+        if (e) {
+            NSLog(@"logError");
+            //[SVProgressHUD dismiss];
+            comp(NO, [NSArray array]);
+        }else {
+            //NSLog(@"TopicRankArray:%@", array);
+            //comp(array);
+            NSMutableArray *resArray = [[NSMutableArray alloc] init];
+            
+            for (NSDictionary *dic in array) {
+                DYTopicModel *model = [[DYTopicModel alloc] init];
+                model.titleStr = [dic objectForKey:@"title"];
+                model.nameStr = [dic objectForKey:@"name"];
+                model.point = [[dic objectForKey:@"point"] intValue];
+                //model.iconImgStr = [dic objectForKey:@"iconURL"];
+                model.iconImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dic objectForKey:@"iconURL"]]]];
+                model.topicIDStr = [dic objectForKey:@"topic_ID"];
+                
+                [resArray addObject:model];
+                
+                
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //[SVProgressHUD dismiss];
+                comp(YES, resArray);
+                //[SVProgressHUD dismiss];
+                //[_tweetArray addObjectsFromArray:rtnArray];
+                
+            });
+        }
+    });
+}
+
+-(void)requestTopicLogNewDataCompletion:(LoadTopicRankDataCompletion)comp
+{
+    //[SVProgressHUD showWithStatus:@"Loading"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *httpDataUrl = [NSURL URLWithString:SELECT_LOG_NEW_URL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:httpDataUrl];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSError *e;
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&e];
+        if (e) {
+            NSLog(@"logError");
+            //[SVProgressHUD dismiss];
+            comp(NO, [NSArray array]);
+        }else {
+            //NSLog(@"TopicRankArray:%@", array);
+            //comp(array);
+            NSMutableArray *resArray = [[NSMutableArray alloc] init];
+            
+            for (NSDictionary *dic in array) {
+                DYTopicModel *model = [[DYTopicModel alloc] init];
+                model.titleStr = [dic objectForKey:@"title"];
+                model.nameStr = [dic objectForKey:@"name"];
+                model.point = [[dic objectForKey:@"point"] intValue];
+                //model.iconImgStr = [dic objectForKey:@"iconURL"];
+                model.iconImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dic objectForKey:@"iconURL"]]]];
+                model.topicIDStr = [dic objectForKey:@"topic_ID"];
+                
+                [resArray addObject:model];
+                
+                
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //[SVProgressHUD dismiss];
+                comp(YES, resArray);
+                //[SVProgressHUD dismiss];
+                //[_tweetArray addObjectsFromArray:rtnArray];
+                
+            });
+        }
+    });
+}
+
+-(void)requestLogPushDataTopic_ID:(int)topic_ID Completion:(LoadTopicRankDataCompletion)comp
+{
+    //[SVProgressHUD showWithStatus:@"Loading"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *httpDataUrl = [NSURL URLWithString:SELECT_LOG_PUSH];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:httpDataUrl];
+        [request setHTTPMethod:@"POST"];
+        NSString *body = [NSString stringWithFormat:@"topic_ID=%d", topic_ID];
+        [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSError *e;
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&e];
+        if (e) {
+            NSLog(@"logPushError");
+            //[SVProgressHUD dismiss];
+            comp(NO, [NSArray array]);
+        }else {
+            //NSLog(@"TopicRankArray:%@", array);
+            //comp(array);
+            NSMutableArray *resArray = [[NSMutableArray alloc] init];
+            
+            for (NSDictionary *dic in array) {
+                DYModel *model = [[DYModel alloc] init];
+                //model.titleStr = [dic objectForKey:@"title"];
+                model.nameStr = [dic objectForKey:@"name"];
+                //model.point = [[dic objectForKey:@"point"] intValue];
+                //model.iconImgStr = [dic objectForKey:@"iconURL"];
+                model.iconImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dic objectForKey:@"iconURL"]]]];
+                model.contentStr = [dic objectForKey:@"message"];
+                //model.topicIDStr = [dic objectForKey:@"topic_ID"];
+                
+                [resArray addObject:model];
+                
+                
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //[SVProgressHUD dismiss];
+                comp(YES, resArray);
+                //[SVProgressHUD dismiss];
+                //[_tweetArray addObjectsFromArray:rtnArray];
+                
+            });
+        }
+    });
+}
+
 -(void)updateTopicPointTopic_ID:(int)topic_ID completion:(LoadUpdateTopicDataCompletion)comp
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -349,8 +519,11 @@
                                     if ([resStr isEqualToString:@"OK"]) {
                                         _userID = [NSString stringWithString:user_IDStr];
                                         
+                                        
                                         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
                                         [ud setObject:_userID forKey:@"user_ID"];
+                                        [ud setObject:profileImgStr forKey:@"iconImgStr"];
+                                        [ud setObject:nameStr forKey:@"name"];
                                         [ud synchronize];
                                         
                                         comp(YES);

@@ -11,6 +11,7 @@
 #import "DYManager.h"
 #import "DYModel.h"
 #import "DYCommentPostViewController.h"
+#import "SocketIOPacket.h"
 
 @interface DYTLViewController ()
 
@@ -26,6 +27,8 @@
         
         self.title = @"TL";
         self.navigationItem.title = @"タイムライン";
+        
+        [DYManager sharedManager];
     }
     return self;
 }
@@ -42,114 +45,81 @@
     
     //self.view.backgroundColor = [UIColor redColor];
     
+    //タブバー
+    UITabBar *tabBar = self.tabBarController.tabBar;
     
+    UITabBarItem *item1 = [tabBar.items objectAtIndex:0];
+    //[item1 setFinishedSelectedImage:<#(UIImage *)#> withFinishedUnselectedImage:<#(UIImage *)#>]
+    [item1 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [item1 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateSelected];
     
-    //commentArray = [[NSMutableArray alloc] initWithArray:@[@"hello", @"hora!!!!", @"こんにちわーーーーー", @"もーーーーー！"]];
+    UITabBarItem *item2 = [tabBar.items objectAtIndex:1];
+    //[item1 setFinishedSelectedImage:<#(UIImage *)#> withFinishedUnselectedImage:<#(UIImage *)#>]
+    [item2 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [item2 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateSelected];
+    
+    UITabBarItem *item3 = [tabBar.items objectAtIndex:2];
+    //[item1 setFinishedSelectedImage:<#(UIImage *)#> withFinishedUnselectedImage:<#(UIImage *)#>]
+    [item3 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [item3 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateSelected];
+    
+    UITabBarItem *item4 = [tabBar.items objectAtIndex:3];
+    //[item1 setFinishedSelectedImage:<#(UIImage *)#> withFinishedUnselectedImage:<#(UIImage *)#>]
+    [item4 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [item4 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateSelected];
+    
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
     /*
-    NSArray *key1 = [NSArray arrayWithObjects:@"name", @"content", nil];
-    NSArray *value1 =
-    [NSArray arrayWithObjects:@"yuma", @"helloooooooooooo", nil];
-    NSDictionary *dic1 = [NSDictionary dictionaryWithObjects:value1 forKeys:key1];
-    */
-    
     DYModel *model1 = [[DYModel alloc] init];
     model1.nameStr = @"yuma";
     model1.contentStr = @"helloooooooooooo";
-    /*
-    NSArray *key2 = [NSArray arrayWithObjects:@"name", @"content", nil];
-    NSArray *value2 =
-    [NSArray arrayWithObjects:@"kazunori", @"horaaaaaaaaa", nil];
-    NSDictionary *dic2 = [NSDictionary dictionaryWithObjects:value2 forKeys:key2];
-    */
+    
     DYModel *model2 = [[DYModel alloc] init];
     model2.nameStr = @"kazunori";
     model2.contentStr = @"horaaaaaaaaa";
-    /*
-    NSArray *key3 = [NSArray arrayWithObjects:@"name", @"content", nil];
-    NSArray *value3 =
-    [NSArray arrayWithObjects:@"darekaaaa", @"こんにちはーーーーーーーー", nil];
-    NSDictionary *dic3 = [NSDictionary dictionaryWithObjects:value3 forKeys:key3];
-    */
+    
     DYModel *model3 = [[DYModel alloc] init];
     model3.nameStr = @"darekaaaa";
     model3.contentStr = @"こんにちはーーーーーーーー";
-    /*
-    NSArray *key4 = [NSArray arrayWithObjects:@"name", @"content", nil];
-    NSArray *value4 =
-    [NSArray arrayWithObjects:@"uooooooooo", @"paoooooonnnnn", nil];
-    NSDictionary *dic4 = [NSDictionary dictionaryWithObjects:value4 forKeys:key4];
-    */
+    
     DYModel *model4 = [[DYModel alloc] init];
     model4.nameStr = @"uooooooooo";
     model4.contentStr = @"paoooooonnnnnーーーーーーーー";
-    /*
-    NSArray *key5 = [NSArray arrayWithObjects:@"name", @"content", nil];
-    NSArray *value5 =
-    [NSArray arrayWithObjects:@"nayyyyyyyyyyyyyyyyyyy", @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", nil];
-    NSDictionary *dic5 = [NSDictionary dictionaryWithObjects:value5 forKeys:key5];
-    */
+    
     DYModel *model5 = [[DYModel alloc] init];
     model5.nameStr = @"nayyyyyyyyyyyyyyyyyyy";
     model2.contentStr = @"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     
-    /*
-    NSArray *key6 = [NSArray arrayWithObjects:@"name", @"content", nil];
-    NSArray *value6 =
-    [NSArray arrayWithObjects:@"uooooooooo", @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", nil];
-    NSDictionary *dic6 = [NSDictionary dictionaryWithObjects:value6 forKeys:key6];
-    */
-    
     DYModel *model6 = [[DYModel alloc] init];
     model6.nameStr = @"kazunori";
     model6.contentStr = @"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
-    /*
-    NSArray *key7 = [NSArray arrayWithObjects:@"name", @"content", nil];
-    NSArray *value7 =
-    [NSArray arrayWithObjects:@"uooooooooo", @"1111111111111111111111111111111111111111111111111111111111111111111111111112222gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggl", nil];
-    NSDictionary *dic7 = [NSDictionary dictionaryWithObjects:value7 forKeys:key7];
-    */
+    
     DYModel *model7 = [[DYModel alloc] init];
     model7.nameStr = @"kazunori";
     model7.contentStr = @"1111111111111111111111111111111111111111111111111111111111111111111111111112222gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggl";
-    /*
-    NSArray *key8 = [NSArray arrayWithObjects:@"name", @"content", nil];
-    NSArray *value8 =
-    [NSArray arrayWithObjects:@"yuma", @" ", nil];
-    NSDictionary *dic8 = [NSDictionary dictionaryWithObjects:value8 forKeys:key8];
-    */
+    
     DYModel *model8 = [[DYModel alloc] init];
     model8.nameStr = @"kazunori";
     model8.contentStr = @"foooooooooooooo";
-    
-    
-    commentArray = [[NSMutableArray alloc] initWithArray:@[model1, model2, model3, model4, model5, model6, model7, model8]];
-    
-    [self createArray];
-    
-    
-    //DYModel *model = [[DYModel alloc] init];
-    /*
-    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"post" style:UIBarButtonItemStyleBordered target:self action:@selector(showPostCtl)];
-    self.navigationItem.rightBarButtonItem = btn;
     */
-    //pull to refresh
-    /*
-     refreshSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-     refreshSpinner.frame = CGRectMake(floorf(floorf(50 - 20) / 2), floorf((50 - 20) / 2), 20, 20);
-     refreshSpinner.hidesWhenStopped = YES;
-     refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-     refreshView.backgroundColor = [UIColor grayColor];
-     [refreshView addSubview:refreshSpinner];
-     
-     [_tableView addSubview:refreshView];
-     [_tableView sendSubviewToBack:refreshView];
-     _tableView.tableFooterView = refreshView;
-     _tableView.contentInset = UIEdgeInsetsMake(0, 0, -50, 0);
-     */
     
+    //commentPastArray = [[NSMutableArray alloc] initWithArray:@[model1, model2, model3, model4, model5, model6, model7, model8]];
+    //commentCenterArray = [[NSMutableArray alloc] initWithArray:@[model1, model2, model3, model4, model5, model6, model7, model8]];
+    //commentNewArray = [[NSMutableArray alloc] initWithArray:@[model1, model2, model3, model4, model5, model6, model7, model8]];
+    
+    commentPastArray = [NSMutableArray array];
+    commentCenterArray = [NSMutableArray array];
+    commentNewArray = [NSMutableArray array];
+    
+    topicArray = [NSMutableArray array];
+    //[topicArray addObjectsFromArray:@[@"past", @"center", @"new"]];
+    
+    //[self createArray];
+    
+    
+        
     _tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -159,7 +129,7 @@
     
     _textField = [[UITextView alloc] init];
     _textField.frame = CGRectMake(10, 2.5, 240, 35);
-    _textField.backgroundColor = [UIColor redColor];
+    _textField.backgroundColor = [UIColor lightGrayColor];
     _textField.delegate = self;
     //textField.font = [];
     _textField.textAlignment = NSTextAlignmentLeft;
@@ -168,7 +138,7 @@
     [bottomView addSubview:_textField];
     
     postBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    postBtn.frame = CGRectMake(260, 2.5, 50, 30);
+    postBtn.frame = CGRectMake(260, 5, 50, 30);
     [postBtn setTitle:@"post" forState:UIControlStateNormal];
     [postBtn addTarget:self action:@selector(commentPost) forControlEvents:UIControlEventTouchUpInside];
     postBtn.enabled = NO;
@@ -222,8 +192,197 @@
     //singleTap.delegate = self;
     singleTap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:singleTap];
+    
+    //node.js系
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(applicationWillResignActive)
+               name:@"applicationWillResignActive"
+             object:nil];
+    [nc addObserver:self
+           selector:@selector(applicationDidBecomeActive)
+               name:@"applicationDidBecomeActive"
+             object:nil];
+    
+    socketIO = [[SocketIO alloc] initWithDelegate:self];
+    
+    count = 0;
+    
 }
 
+- (void)applicationDidBecomeActive
+{
+    // localhost:3000に接続開始
+    [socketIO connectToHost:@"49.212.140.71" onPort:10001];
+}
+
+- (void)applicationWillResignActive
+{
+    // 接続終了
+    [socketIO disconnect];
+}
+
+// イベント送信
+/*
+- (IBAction)sendEvent:(id)sender
+{
+    // 文字が入力されていなければ何もしない
+    if (_textField.text.length == 0) {
+        return;
+    }
+    
+    // イベント送信
+    [socketIO sendEvent:@"message:send" withData:@{@"user_ID" :[DYManager sharedManager].userID ,@"message" : _textField.text}];
+    
+    // テキストフィールドをリセット
+    _textField.text = @"";
+}
+ */
+
+#pragma mark - socket.IO-objC method
+
+// サーバとの接続が成功したときに実行されるメソッド
+- (void)socketIODidConnect:(SocketIO *)socket
+{
+    NSLog(@"%s", __func__);
+    
+    //_textField.enabled = YES;
+    //self.formCell.sendButton.enabled = YES;
+}
+
+// イベントを受信したときに実行されるメソッド
+- (void)socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
+{
+    NSLog(@"%s", __func__);
+    
+    if ([packet.name isEqualToString:@"message:receive"]) {
+        // メッセージが空でなければ追加
+        if (packet.args[0][@"message"]) {
+            //[commentArray insertObject:packet.args[0][@"message"] atIndex:0];
+            //[commentArray addObject:packet.args[0][@"message"]];
+            //[self.datas insertObject:packet.args[0][@"user_ID"] atIndex:0];
+            //[commentArray addObject:packet.args[0]];
+            
+            DYModel *model = [[DYModel alloc] init];
+            model.nameStr = [packet.args[0] objectForKey:@"name"];
+            model.contentStr = [packet.args[0] objectForKey:@"message"];
+            model.iconImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[packet.args[0] objectForKey:@"iconURL"]]]];
+            
+            [commentNewArray addObject:model];
+            [self.tableView reloadData];
+        }
+    }
+    else if([packet.name isEqualToString:@"firstMessage"]) {
+        //初期起動
+        
+        if (commentPastArray.count > 0) {
+            [commentPastArray removeAllObjects];
+        }
+        if (commentCenterArray.count > 0) {
+            [commentCenterArray removeAllObjects];
+        }
+        if (commentNewArray.count > 0) {
+            [commentNewArray removeAllObjects];
+        }
+        
+        int count2 = 0;
+        for (NSArray *array in packet.args[0]) {
+            
+            //NSLog(@"####################%@", array);
+            
+            if (array.count > 0) {
+                for (NSDictionary *dic in array) {
+                    DYModel *model = [[DYModel alloc] init];
+                    model.nameStr = [dic objectForKey:@"name"];
+                    model.contentStr = [dic objectForKey:@"message"];
+                    model.iconImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dic objectForKey:@"iconURL"]]]];
+                    
+                    switch (count2) {
+                        case 0:
+                            [commentPastArray addObject:model];
+                            break;
+                        case 1:
+                            [commentCenterArray addObject:model];
+                            break;
+                        case 2:
+                            [commentNewArray addObject:model];
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                    
+                }
+            }else {
+                
+            }
+            count2++;
+            
+        }
+        
+        [self.tableView reloadData];
+    }
+    else if ([packet.name isEqualToString:@"addTopic"]) {
+        // メッセージが空でなければ追加
+        
+        for (NSDictionary *dic in packet.args[0]) {
+            
+            NSLog(@"%@", dic);
+            
+            //[commentArray insertObject:dic[@"title"] atIndex:0];
+            
+            //topicStr = dic[@"title"];
+            [topicArray addObject:dic[@"title"]];
+            [topicArray removeObjectAtIndex:0];
+            
+            [commentPastArray removeAllObjects];
+            [commentPastArray addObjectsFromArray:commentCenterArray];
+            [commentCenterArray removeAllObjects];
+            [commentCenterArray addObjectsFromArray:commentNewArray];
+            [commentNewArray removeAllObjects];
+            
+        }
+        
+        //topicStr = packet.args[0][0][@"title"];
+        
+        [self.tableView reloadData];
+    }
+    else if ([packet.name isEqualToString:@"firstTopic"]) {
+        // メッセージが空でなければ追加
+        
+        if (topicArray.count > 0) {
+            [topicArray removeAllObjects];
+        }
+        
+        for (NSDictionary *dic in packet.args[0]) {
+            
+            NSLog(@"firstTopic##########::%@", dic);
+            
+            //[commentArray insertObject:dic[@"title"] atIndex:0];
+            //topicStr = dic[@"title"];
+            [topicArray addObject:dic[@"title"]];
+        }
+        
+        //[commentArray packet.args[0][0][@"title"]];
+        //topicStr = packet.args[0][0][@"title"];
+        
+        [self.tableView reloadData];
+    }
+    
+}
+
+// サーバとの接続が切断されたときに実行されるメソッド
+- (void)socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
+{
+    NSLog(@"%s", __func__);
+    
+    //_textField.enabled = NO;
+    //self.formCell.sendButton.enabled = NO;
+    postBtn.enabled = NO;
+}
+
+
+/*
 -(void)createArray
 {
     //array1 = [[NSMutableArray alloc] init];
@@ -245,6 +404,7 @@
     }
     
 }
+*/
 
 -(void)onSingleTap:(UITapGestureRecognizer *)recognizer
 {
@@ -267,7 +427,7 @@
     
     _textField = [[UITextView alloc] init];
     _textField.frame = CGRectMake(10, 2.5, 240, 35);
-    _textField.backgroundColor = [UIColor redColor];
+    _textField.backgroundColor = [UIColor lightGrayColor];
     _textField.delegate = self;
     //textField.font = [];
     _textField.textAlignment = NSTextAlignmentLeft;
@@ -286,10 +446,11 @@
     
     _textField.inputAccessoryView = bottomView;
     
+    scrollFlag = NO;
     
 }
 
-
+// イベント送信
 -(void)commentPost
 {
     //NSLog(@"commentPost");
@@ -297,6 +458,19 @@
     
     //[self.navigationController disablesAutomaticKeyboardDismissal];
     //[self disablesAutomaticKeyboardDismissal];
+    
+    // 文字が入力されていなければ何もしない
+    if (_textField.text.length == 0) {
+        return;
+    }
+    
+    // イベント送信
+    [socketIO sendEvent:@"message:send" withData:@{@"user_ID" :[DYManager sharedManager].userID ,@"message" : _textField.text}];
+    
+    // テキストフィールドをリセット
+    _textField.text = @"";
+    
+    
     
     NSLog(@"%d", [_textField isFirstResponder]);
     if (![_textField isFirstResponder]) {
@@ -313,7 +487,7 @@
     
     _textField = [[UITextView alloc] init];
     _textField.frame = CGRectMake(10, 2.5, 240, 35);
-    _textField.backgroundColor = [UIColor redColor];
+    _textField.backgroundColor = [UIColor lightGrayColor];
     _textField.delegate = self;
     //textField.font = [];
     _textField.textAlignment = NSTextAlignmentLeft;
@@ -334,6 +508,7 @@
     _textField.inputAccessoryView = bottomView;
     
     
+    scrollFlag = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -355,14 +530,37 @@
 
 #pragma mark - UITextViewDelegate
 
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
+-(void)registerForKeyboardNotification
 {
-   
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+    //[NSNumber numberWithInt:<#(int)#>];
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    if (!scrollFlag) {
+        CGPoint scrollPoint = CGPointMake(0.0, _tableView.contentOffset.y + 165.0);
+        [_tableView setContentOffset:scrollPoint animated:YES];
+    }
+    
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    CGPoint scrollPoint = CGPointMake(0.0, _tableView.contentOffset.y - 165.0);
+    [_tableView setContentOffset:scrollPoint animated:YES];
 }
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
+    [self registerForKeyboardNotification];
+    
     if (!isEditing) {
         isEditing = YES;
     }else {
@@ -378,6 +576,7 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    scrollFlag = YES;
     // 入力済みのテキストを取得
     NSMutableString *str = [textView.text mutableCopy];
     // 入力済みのテキストと入力が行われたテキストを結合
@@ -443,70 +642,60 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    view.backgroundColor = [UIColor redColor];
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, -5, 280, 30)];
+    lbl.backgroundColor = [UIColor clearColor];
+    //lbl.text = @"ガソリンスタンドの溝ってなんなのよ？";
+    lbl.font = [UIFont boldSystemFontOfSize:14.0];
+    lbl.textAlignment = NSTextAlignmentCenter;
+    lbl.textColor = [UIColor whiteColor];
+    [view addSubview:lbl];
+    
     if (section == 0) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-        view.backgroundColor = [UIColor redColor];
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, -5, 280, 30)];
-        lbl.backgroundColor = [UIColor clearColor];
-        lbl.text = @"ガソリンスタンドの溝ってなんなのよ？";
-        lbl.font = [UIFont boldSystemFontOfSize:14.0];
-        lbl.textAlignment = NSTextAlignmentCenter;
-        lbl.textColor = [UIColor whiteColor];
-        [view addSubview:lbl];
+        //lbl.text = topicStr;
+        lbl.text = [topicArray objectAtIndex:section];
         return view;
     }else if (section == 1) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-        view.backgroundColor = [UIColor blueColor];
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, -5, 280, 30)];
-        lbl.backgroundColor = [UIColor clearColor];
-        lbl.text = @"剛力あやめどうよ？";
-        lbl.font = [UIFont boldSystemFontOfSize:14.0];
-        lbl.textAlignment = NSTextAlignmentCenter;
-        lbl.textColor = [UIColor whiteColor];
-        [view addSubview:lbl];
+        //lbl.text = topicStr;
+        lbl.text = [topicArray objectAtIndex:section];
         return view;
     }else if (section == 2) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-        view.backgroundColor = [UIColor brownColor];
-        UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, -5, 280, 30)];
-        lbl.backgroundColor = [UIColor clearColor];
-        lbl.text = @"オリンピックどうよ？";
-        lbl.font = [UIFont boldSystemFontOfSize:14.0];
-        lbl.textAlignment = NSTextAlignmentCenter;
-        lbl.textColor = [UIColor whiteColor];
-        [view addSubview:lbl];
-
+        //lbl.text = topicStr;
+        lbl.text = [topicArray objectAtIndex:section];
         return view;
     }else {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
         view.backgroundColor = [UIColor blackColor];
         return view;
     }
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return topicArray.count;
+    //return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     switch (section) {
         case 0:
-            return commentArray.count;
+            return commentPastArray.count;
             break;
         case 1:
-            return array2.count;
+            return commentCenterArray.count;
             break;
         case 2:
-            return array3.count;
+            return commentNewArray.count;
             break;
         default:
+            return 0;
             break;
     }
     
-    return commentArray.count;
+    //return commentArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -522,20 +711,23 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    //cell.textLabel.text = [NSString stringWithFormat:@"%@", [commentArray objectAtIndex:indexPath.row]];
     
     switch (indexPath.section) {
         case 0:
         {
-            DYModel *model = [commentArray objectAtIndex:indexPath.row];
+            DYModel *model = [commentPastArray objectAtIndex:indexPath.row];
+            cell.iconImgView.image = model.iconImg;
+            NSLog(@"iconImg:%@", cell.iconImgView.image);
             cell.nameLbl.text = model.nameStr;
             cell.contentLbl.text = model.contentStr;
             [cell.contentLbl sizeToFit];
-        }
             break;
+        }
         case 1:
         {
-            DYModel *model = [array2 objectAtIndex:indexPath.row];
+            DYModel *model = [commentCenterArray objectAtIndex:indexPath.row];
+            cell.iconImgView.image = model.iconImg;
+            NSLog(@"iconImg:%@", cell.iconImgView.image);
             cell.nameLbl.text = model.nameStr;
             cell.contentLbl.text = model.contentStr;
             [cell.contentLbl sizeToFit];
@@ -543,12 +735,15 @@
         }
         case 2:
         {
-            DYModel *model = [array3 objectAtIndex:indexPath.row];
+            DYModel *model = [commentNewArray objectAtIndex:indexPath.row];
+            cell.iconImgView.image = model.iconImg;
+            NSLog(@"iconImg:%@", cell.iconImgView.image);
             cell.nameLbl.text = model.nameStr;
             cell.contentLbl.text = model.contentStr;
             [cell.contentLbl sizeToFit];
             break;
         }
+            
         default:
             break;
     }
@@ -581,33 +776,30 @@
     switch (indexPath.section) {
         case 0:
         {
-            DYModel *model = [commentArray objectAtIndex:indexPath.row];
+            DYModel *model = [commentPastArray objectAtIndex:indexPath.row];
             CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                                   constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                                       lineBreakMode:NSLineBreakByWordWrapping];
-            
             //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
             return contentTextSize.height + 70.0;
             break;
         }
         case 1:
         {
-            DYModel *model = [array2 objectAtIndex:indexPath.row];
+            DYModel *model = [commentCenterArray objectAtIndex:indexPath.row];
             CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                                   constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                                       lineBreakMode:NSLineBreakByWordWrapping];
-            
             //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
             return contentTextSize.height + 70.0;
             break;
         }
         case 2:
         {
-            DYModel *model = [array3 objectAtIndex:indexPath.row];
+            DYModel *model = [commentNewArray objectAtIndex:indexPath.row];
             CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                                   constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                                       lineBreakMode:NSLineBreakByWordWrapping];
-            
             //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
             return contentTextSize.height + 70.0;
             break;
@@ -617,12 +809,12 @@
             return 100.0;
             break;
     }
+    
     /*
     DYModel *model = [commentArray objectAtIndex:indexPath.row];
     CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                           constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                               lineBreakMode:NSLineBreakByWordWrapping];
-    
     //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
     return contentTextSize.height + 70.0;
      */

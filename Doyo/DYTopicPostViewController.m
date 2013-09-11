@@ -87,7 +87,7 @@
     //キャンセル時
     //DYTopicViewController *viewCtl = [[DYTopicViewController alloc] init];
     //viewCtl.isPostFlag = YES;
-    [DYManager sharedManager].isPostFlag = YES;
+    [DYManager sharedManager].isPostFlag = NO;
     [self dismissViewControllerAnimated:YES completion:^{
 
     }];
@@ -99,6 +99,7 @@
     
     [[DYManager sharedManager] requestInsertTopicData:_textView.text Completion:^(BOOL flag) {
         if (flag) {
+            [DYManager sharedManager].isPostFlag = YES;
             [self dismissViewControllerAnimated:YES completion:^{
                 
             }];

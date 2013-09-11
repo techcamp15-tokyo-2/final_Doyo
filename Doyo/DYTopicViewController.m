@@ -40,6 +40,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+    [[DYManager sharedManager] requestTopicNewDataCompletion:^(BOOL sucsess, NSArray *array) {
+        //NSLog(@"newArray:%@", array);
+        if (sucsess) {
+            newArray = [NSMutableArray arrayWithArray:array];
+            [_tableView reloadData];
+        }
+        
+    }];
+    
+    //ランキング情報取得
+    [[DYManager sharedManager] requestTopicRankDataCompletion:^(BOOL sucsess, NSArray *array) {
+        if (sucsess) {
+            rankingArray = [NSMutableArray arrayWithArray:array];
+            [_tableView reloadData];
+        }
+        
+    }];
     
     //segment切り替え
     SVSegmentedControl *sv = [[SVSegmentedControl alloc] initWithSectionTitles:@[@"new", @"ranking"]];
@@ -90,13 +107,13 @@
     [_tableView addSubview:refreshHeaderView];
     [_tableView sendSubviewToBack:refreshHeaderView];
     
-    BtnArray = [NSMutableArray array];
-    alredyBtnArray = [NSMutableArray array];
-    [self niceArray];
+    //BtnArray = [NSMutableArray array];
+    //alredyBtnArray = [NSMutableArray array];
+    //[self niceArray];
     
     
 }
-
+/*
 -(void)niceArray
 {
     //一度押したボタンはもう押すことは出来ません。
@@ -115,7 +132,7 @@
         }
     }];
 }
-
+*/
 -(void)updateTopicPointDone:(NSNotification*)notif
 {
     int updateTopicID = [notif.object intValue];
@@ -129,6 +146,9 @@
         
     }
     */
+    
+    [[DYManager sharedManager] niceArray];
+    
     
     for (DYTopicModel *model in newArray) {
         if ([model.topicIDStr intValue] == updateTopicID) {
@@ -152,8 +172,6 @@
     
 
     if ([DYManager sharedManager].isPostFlag) {
-        
-    }else {
         //新着情報取得
         [[DYManager sharedManager] requestTopicNewDataCompletion:^(BOOL sucsess, NSArray *array) {
             //NSLog(@"newArray:%@", array);
@@ -172,6 +190,7 @@
             }
             
         }];
+    }else {
 
     }
     
@@ -254,6 +273,8 @@
 
 -(void)changePage:(SVSegmentedControl*)seg
 {
+    [self refresh];
+    
     [_tableView setContentOffset:CGPointMake(0.0, 0.0) animated:NO];
     if (seg.selectedSegmentIndex == 0) {
         //open new
@@ -302,7 +323,7 @@
 {
     BOOL flag = NO;
     
-    for (NSString *i in alredyBtnArray) {
+    for (NSString *i in [DYManager sharedManager].alredyBtnArray) {
         if ([i intValue] == topic_ID) {
             flag = YES;
             break;

@@ -19,7 +19,10 @@ typedef void (^LoadSelectUserTopicIDDataCompletion)(BOOL success, NSArray *array
 @interface DYManager : NSObject
 
 @property (nonatomic, retain) NSString *userID;
+@property (nonatomic, retain) NSString *iconImgStr;
+@property (nonatomic, retain) NSString *name;
 @property BOOL isPostFlag;
+@property (nonatomic, retain) NSMutableArray *alredyBtnArray;
 
 +(DYManager *)sharedManager;
 -(void)requestTopicNewDataCompletion:(LoadTopicDataCompletion)comp;
@@ -30,5 +33,12 @@ typedef void (^LoadSelectUserTopicIDDataCompletion)(BOOL success, NSArray *array
 -(void)updateTopicPointTopic_ID:(int)topic_ID completion:(LoadUpdateTopicDataCompletion)comp;
 -(void)requestInsertUserTopicIDData:(int)topicID Completion:(LoadInsertUserTopicIDDataCompletion)comp;
 -(void)requestSelectUserTopicIDDataCompletion:(LoadSelectUserTopicIDDataCompletion)comp;
+
+-(void)requestTopicLogDataCompletion:(LoadTopicRankDataCompletion)comp;
+
+-(void)requestTopicLogNewDataCompletion:(LoadTopicRankDataCompletion)comp;
+-(void)requestLogPushDataTopic_ID:(int)topic_ID Completion:(LoadTopicRankDataCompletion)comp;
+
+-(void)niceArray;
 
 @end

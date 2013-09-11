@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SocketIO.h"
 
 @interface DYTLViewController : UIViewController
-<UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+<UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, SocketIODelegate>
 {
-    NSMutableArray *commentArray;
+    NSMutableArray *commentPastArray;
+    NSMutableArray *commentCenterArray;
+    NSMutableArray *commentNewArray;
+    
+    NSMutableArray *topicArray;
     
     BOOL isBottomLoading;
     
@@ -31,9 +36,15 @@
     
     NSString *commentPostStr;
     
-    NSMutableArray *array1;
-    NSMutableArray *array2;
-    NSMutableArray *array3;
+    
+    
+    SocketIO *socketIO;
+    
+    NSString *topicStr;
+    
+    int count;
+    
+    BOOL scrollFlag;
 }
 
 @property (nonatomic, strong) UITextView *textField;

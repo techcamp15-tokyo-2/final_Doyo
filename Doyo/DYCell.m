@@ -45,7 +45,7 @@
         
         _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(_iconImgView.frame.origin.x + _iconImgView.frame.size.width + 20,
                                                              _iconImgView.frame.origin.y + 10,
-                                                             100, 20)];
+                                                             200, 20)];
         _nameLbl.numberOfLines = 1;
         _nameLbl.font = [UIFont boldSystemFontOfSize:14.0];
         _nameLbl.textAlignment = NSTextAlignmentLeft;
@@ -111,12 +111,12 @@
 
         _nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(_iconImgView.frame.origin.x + _iconImgView.frame.size.width + 20,
                                                              _iconImgView.frame.origin.y + 10,
-                                                             160, 20)];
+                                                             200, 20)];
         _nameLbl.numberOfLines = 1;
         _nameLbl.font = [UIFont boldSystemFontOfSize:14.0];
         _nameLbl.textAlignment = NSTextAlignmentLeft;
         [self.contentView addSubview:_nameLbl];
-        _nameLbl.backgroundColor = [UIColor redColor];
+        _nameLbl.backgroundColor = [UIColor lightGrayColor];
         
         /*
         _rankLbl = [[UILabel alloc] initWithFrame:CGRectMake(280, 10, 30, 30)];
@@ -145,7 +145,7 @@
         _pointLbl.font = [UIFont boldSystemFontOfSize:14.0];
         _pointLbl.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:_pointLbl];
-        _pointLbl.backgroundColor = [UIColor brownColor];
+        _pointLbl.backgroundColor = [UIColor lightGrayColor];
         
     }
     return self;
@@ -175,7 +175,7 @@
         }
     }];
     
-    //sender.enabled = NO;
+    sender.enabled = NO;
 }
 
 -(void)refresh
