@@ -45,6 +45,10 @@
     int count;
     
     BOOL scrollFlag;
+    
+    NSString *userID;
+    
+    CGSize size;
 }
 
 @property (nonatomic, strong) UITextView *textField;

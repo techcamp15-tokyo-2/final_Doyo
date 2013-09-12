@@ -47,11 +47,13 @@
     
     //キャンセルポタン
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithTitle:@"cansel" style:UIBarButtonItemStyleBordered target:self action:@selector(canselBtnTap)];
+    cancelBtn.tintColor = [UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0];
     self.navigationItem.leftBarButtonItem = cancelBtn;
     
     
     //投稿ボタン
     postBtn = [[UIBarButtonItem alloc] initWithTitle:@"post" style:UIBarButtonItemStyleBordered target:self action:@selector(postBtnTap)];
+    postBtn.tintColor = [UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0];
     self.navigationItem.rightBarButtonItem = postBtn;
     //初期ではpostBtnは押せない
     postBtn.enabled = NO;

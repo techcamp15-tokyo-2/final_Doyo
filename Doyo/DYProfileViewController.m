@@ -8,6 +8,7 @@
 
 #import "DYProfileViewController.h"
 #import "DYManager.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface DYProfileViewController ()
 
@@ -21,7 +22,7 @@
     if (self) {
         // Custom initialization
         
-        self.title = @"profile";
+        self.title = @"ぷろふぃーる";
         self.navigationItem.title = @"profile";
     }
     return self;
@@ -32,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0];
     
 
     NSString *userID = [DYManager sharedManager].userID;
@@ -40,13 +41,27 @@
     NSString *iconImgStr = [DYManager sharedManager].iconImgStr;
     NSLog(@"userID:%@__name:%@__iconImg:%@", userID, name, iconImgStr);
     
+    UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 300, 100)];
+    bgview.backgroundColor = [UIColor whiteColor];
+    bgview.layer.cornerRadius = 10.0;
+    bgview.clipsToBounds = YES;
+    [_scrollView addSubview:bgview];
+    
     _iconImg.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:iconImgStr]]];
+    
+    [self.view bringSubviewToFront:_iconImg];
     UILabel *nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(140, 35, 150, 30)];
     nameLbl.text = name;
     nameLbl.backgroundColor = [UIColor lightGrayColor];
     nameLbl.font = [UIFont systemFontOfSize:14.0];
     nameLbl.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:nameLbl];
+    nameLbl.layer.cornerRadius = 5.0;
+    nameLbl.clipsToBounds = YES;
+    
+    _iconImg.layer.cornerRadius = _iconImg.frame.size.width / 2.0;
+    _iconImg.clipsToBounds = YES;
+    [_scrollView bringSubviewToFront:_iconImg];
+    [_scrollView addSubview:nameLbl];
     
     UILabel *userIDLbl = [[UILabel alloc] initWithFrame:CGRectMake(140, nameLbl.frame.origin.y + nameLbl.frame.size.height + 10,
                                                                    150, 30)];
@@ -54,9 +69,14 @@
     userIDLbl.backgroundColor = [UIColor lightGrayColor];
     userIDLbl.font = [UIFont systemFontOfSize:14.0];
     userIDLbl.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:userIDLbl];
+    userIDLbl.layer.cornerRadius = 5.0;
+    userIDLbl.clipsToBounds = YES;
+    [_scrollView addSubview:userIDLbl];
     
+    _profImgView.image = [UIImage imageNamed:@"profile"];
     
+    _scrollView.frame = self.view.frame;
+    _scrollView.contentSize = CGSizeMake(320, 400);
 }
 
 - (void)didReceiveMemoryWarning

@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconImg;
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *profImgView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

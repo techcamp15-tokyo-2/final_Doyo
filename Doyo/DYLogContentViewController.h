@@ -12,6 +12,8 @@
 <UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray *timeLineArray;
+    
+    NSString *userID;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;

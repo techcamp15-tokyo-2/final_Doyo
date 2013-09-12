@@ -26,7 +26,7 @@
     if (self) {
         // Custom initialization
         
-        self.title = @"log";
+        self.title = @"ろぐ";
         //self.navigationItem.title = @"人気ログ";
     }
     return self;
@@ -37,7 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.view.backgroundColor = [UIColor brownColor];
+    self.view.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0];
     
     //初期起動では新着画面
     segNum = 1;
@@ -47,6 +47,9 @@
     //tableView
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.separatorColor = [UIColor clearColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self requestFirst];
     
@@ -56,7 +59,7 @@
     [sv setSelectedSegmentIndex:0 animated:NO];
     sv.frame = CGRectMake(0, 0, 150, 35);
     sv.crossFadeLabelsOnDrag = YES;
-    sv.thumb.tintColor = [UIColor colorWithRed:0.905 green:0.409 blue:0.312 alpha:1.000];
+    sv.thumb.tintColor = [UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0];
     self.navigationItem.titleView = sv;
     
     
@@ -86,6 +89,11 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopicPointDone:) name:@"updateTopicPoint" object:nil];
     
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    backButton.title = @"もどる？";
+    backButton.tintColor = [UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0];
+    self.navigationItem.backBarButtonItem = backButton;
     
 }
 - (void)didReceiveMemoryWarning
@@ -261,6 +269,9 @@
             cell.pointLbl.frame = CGRectMake(cell.niceBtn.frame.origin.x + cell.niceBtn.frame.size.width + 80,
                                              cell.titleLbl.frame.origin.y + cell.titleLbl.frame.size.height + 10,
                                              40, 40);
+            cell.bgView.frame = CGRectMake(10, 10, 300,
+                                           cell.niceBtn.frame.origin.y + cell.niceBtn.frame.size.height + 5);
+            
             break;
         }
         case 1:
@@ -281,6 +292,8 @@
             cell.pointLbl.frame = CGRectMake(cell.niceBtn.frame.origin.x + cell.niceBtn.frame.size.width + 80,
                                              cell.titleLbl.frame.origin.y + cell.titleLbl.frame.size.height + 10,
                                              40, 40);
+            cell.bgView.frame = CGRectMake(10, 10, 300,
+                                           cell.niceBtn.frame.origin.y + cell.niceBtn.frame.size.height + 5);
             break;
         }
             
@@ -301,7 +314,7 @@
             CGSize size = [model.titleStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                      constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                          lineBreakMode:NSLineBreakByWordWrapping];
-            return size.height + 120.0;
+            return size.height + 145.0;
             break;
         }
         case 1:
@@ -310,7 +323,7 @@
             CGSize size = [model.titleStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                      constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                          lineBreakMode:NSLineBreakByWordWrapping];
-            return size.height + 120.0;
+            return size.height + 145.0;
             break;
         }
         default:

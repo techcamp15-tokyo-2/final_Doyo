@@ -41,14 +41,23 @@
     if(self){
         
         
-        /*
+        
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        [ud setObject:@"09dasan" forKey:@"user_ID"];
-        [ud setObject:@"ゆうまっちょだっちょ" forKey:@"name"];
-        [ud setObject:@"http://a0.twimg.com/profile_images/2498123633/image_normal.jpg" forKey:@"iconImgStr"];
+        [ud setObject:@"ka_ru_pi_n" forKey:@"user_ID"];
+        [ud setObject:@"弥太郎" forKey:@"name"];
+        [ud setObject:@"http://a0.twimg.com/profile_images/3620990718/a3d0dcb5cd2ad7e58086d98adfb80ef7_normal.jpeg" forKey:@"iconImgStr"];
         [ud synchronize];
+        
+        
+        /*
+         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+         [ud setObject:@"09dasan" forKey:@"user_ID"];
+         [ud setObject:@"ゆうまっちょだっちょ" forKey:@"name"];
+         [ud setObject:@"http://a0.twimg.com/profile_images/2498123633/image_normal.jpg" forKey:@"iconImgStr"];
+         [ud synchronize];
         */
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        
+        //NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         
         if ([ud objectForKey:@"user_ID"] && [ud objectForKey:@"name"] && [ud objectForKey:@"iconImgStr"]) {
             _userID = [ud objectForKey:@"user_ID"];
@@ -56,6 +65,11 @@
             _iconImgStr = [ud objectForKey:@"iconImgStr"];
             
             NSLog(@"userID:%@::name:%@::iconImg:%@", _userID, _name, _iconImgStr);
+            
+            _isPostFlag = NO;
+            
+            _alredyBtnArray = [NSMutableArray array];
+            [self niceArray];
             
         }else {
             //ログインビュー表示
@@ -69,14 +83,18 @@
             [self login:^(BOOL flag) {
                 if (flag) {
                     
+                    _isPostFlag = NO;
+                    
+                    _alredyBtnArray = [NSMutableArray array];
+                    [self niceArray];
+                    
                 }
             }];
         }
         
-        _isPostFlag = NO;
         
-        _alredyBtnArray = [NSMutableArray array];
-        [self niceArray];
+        
+        
         
     }
     return self;
@@ -401,6 +419,7 @@
                 //model.iconImgStr = [dic objectForKey:@"iconURL"];
                 model.iconImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dic objectForKey:@"iconURL"]]]];
                 model.contentStr = [dic objectForKey:@"message"];
+                model.userID = [dic objectForKey:@"user_ID"];
                 //model.topicIDStr = [dic objectForKey:@"topic_ID"];
                 
                 [resArray addObject:model];
@@ -452,18 +471,22 @@
 
 -(void)login:(LoadTwitterLoginDataCompletion)comp
 {
+    
     ACAccountStore *store = [[ACAccountStore alloc] init];
     ACAccountType *twitterAccountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+
+         NSLog(@"twitter type: %@", twitterAccountType);
+        
         [store requestAccessToAccountsWithType:twitterAccountType options:nil completion:^(BOOL granted, NSError *error) {
+            
+            
             if (!granted) {
                 //ユーザーがアプリへのアクセスを拒否
                 
-                
             }else {
                 NSArray *twitterAccounts = [store accountsWithAccountType:twitterAccountType];
-                
                 
                 if (twitterAccounts.count > 0) {
                     
@@ -484,6 +507,7 @@
                                                                       URL:url
                                                                parameters:params];
                     [request setAccount:account];
+                    
                     [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                         if (error) {
                             
@@ -540,6 +564,7 @@
                             }
                         }
                     }];
+                    NSLog(@"request :%@",request);
                 }
             }
         }];

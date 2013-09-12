@@ -26,6 +26,7 @@
     [coder encodeObject:_nameStr forKey:@"_nameStr"];
 	[coder encodeObject:_contentStr forKey:@"_contentStr"];
     [coder encodeObject:_iconImg forKey:@"_iconImg"];
+    [coder encodeObject:_iconImg forKey:@"_userID"];
     
 }
 
@@ -35,6 +36,8 @@
 		_contentStr = [coder decodeObjectForKey:@"_contentStr"];
         //date_str = [coder decodeObjectForKey:@"date_str"];
         _iconImg = [coder decodeObjectForKey:@"_iconImg"];
+        _iconImg = [coder decodeObjectForKey:@"_userID"];
+        
         
     }
     return self;

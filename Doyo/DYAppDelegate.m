@@ -48,6 +48,9 @@
     [[UITabBar appearance] setBackgroundImage:image];
     [[UITabBar appearance] setSelectionIndicatorImage:selectedBackImg];
     
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navBar"] forBarMetrics:UIBarMetricsDefault];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+
     
     [self.window makeKeyAndVisible];
     return YES;

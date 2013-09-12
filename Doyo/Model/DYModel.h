@@ -13,6 +13,8 @@
 @property (nonatomic, retain) UIImage *iconImg;
 @property (nonatomic, retain) NSString *nameStr;
 @property (nonatomic, retain) NSString *contentStr;
+@property (nonatomic, retain) NSString *userID;
+
 
 -(id)initWithDictionary:(NSDictionary *)d;
 

@@ -17,6 +17,18 @@
 @property (nonatomic, retain) UIImageView *iconImgView;
 @property (nonatomic, retain) UILabel *nameLbl;
 @property (nonatomic, retain) UILabel *contentLbl;
+@property (nonatomic, retain) UIImageView *bgImgView;
+
+- (void)reflesh;
+
+@end
+
+@interface DYOtherTLCell : UITableViewCell
+
+@property (nonatomic, retain) UIImageView *iconImgView;
+@property (nonatomic, retain) UILabel *nameLbl;
+@property (nonatomic, retain) UILabel *contentLbl;
+@property (nonatomic, retain) UIImageView *bgImgView;
 
 - (void)reflesh;
 
@@ -31,6 +43,7 @@
 @property (nonatomic, retain) UILabel *rankLbl;
 @property (nonatomic, retain) UILabel *pointLbl;
 @property (nonatomic, retain) UIButton *niceBtn;
+@property (nonatomic, retain) UIView *bgView;
 
 -(void)refresh;
 

@@ -12,6 +12,7 @@
 #import "DYModel.h"
 #import "DYCommentPostViewController.h"
 #import "SocketIOPacket.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface DYTLViewController ()
 
@@ -25,10 +26,10 @@
     if (self) {
         
         
-        self.title = @"TL";
+        self.title = @"どぅよ？";
         self.navigationItem.title = @"タイムライン";
         
-        [DYManager sharedManager];
+        
     }
     return self;
 }
@@ -45,31 +46,37 @@
     
     //self.view.backgroundColor = [UIColor redColor];
     
+    
+    userID = [NSString stringWithString:[DYManager sharedManager].userID];
+    
     //タブバー
     UITabBar *tabBar = self.tabBarController.tabBar;
     
     UITabBarItem *item1 = [tabBar.items objectAtIndex:0];
-    //[item1 setFinishedSelectedImage:<#(UIImage *)#> withFinishedUnselectedImage:<#(UIImage *)#>]
-    [item1 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [item1 setFinishedSelectedImage:[UIImage imageNamed:@"tab_do_select"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_do_nomal"]];
+    [item1 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:220.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
     [item1 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateSelected];
     
     UITabBarItem *item2 = [tabBar.items objectAtIndex:1];
-    //[item1 setFinishedSelectedImage:<#(UIImage *)#> withFinishedUnselectedImage:<#(UIImage *)#>]
-    [item2 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [item2 setFinishedSelectedImage:[UIImage imageNamed:@"tab_wa_select"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_wa_nomal"]];
+    [item2 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:220.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
     [item2 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateSelected];
     
     UITabBarItem *item3 = [tabBar.items objectAtIndex:2];
-    //[item1 setFinishedSelectedImage:<#(UIImage *)#> withFinishedUnselectedImage:<#(UIImage *)#>]
-    [item3 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [item3 setFinishedSelectedImage:[UIImage imageNamed:@"tab_ro_select"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_ro_nomal"]];
+    [item3 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:220.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
     [item3 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateSelected];
     
     UITabBarItem *item4 = [tabBar.items objectAtIndex:3];
-    //[item1 setFinishedSelectedImage:<#(UIImage *)#> withFinishedUnselectedImage:<#(UIImage *)#>]
-    [item4 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    [item4 setFinishedSelectedImage:[UIImage imageNamed:@"tab_pu_select"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab_pu_nomal"]];
+    [item4 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:220.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
     [item4 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateSelected];
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.separatorColor = [UIColor clearColor];
+    _tableView.backgroundColor = [UIColor clearColor];
     
     /*
     DYModel *model1 = [[DYModel alloc] init];
@@ -123,22 +130,35 @@
     _tableView.contentInset = UIEdgeInsetsMake(0, 0, 40, 0);
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 459, 320, 40)];
-    bottomView.backgroundColor = [UIColor cyanColor];
+    size = [UIScreen mainScreen].bounds.size;
+    size.height -= 20.0;
+    
+    bottomView = [[UIView alloc] init];
+    if (size.height == 460.0) {
+        bottomView.frame = CGRectMake(0, 371, 320, 40);
+    }else {
+        bottomView.frame = CGRectMake(0, 459, 320, 40);
+    }
+    bottomView.backgroundColor = [UIColor whiteColor];
+    bottomView.layer.cornerRadius = 5.0;
+    bottomView.clipsToBounds = YES;
     bottomView.userInteractionEnabled = YES;
     
     _textField = [[UITextView alloc] init];
     _textField.frame = CGRectMake(10, 2.5, 240, 35);
-    _textField.backgroundColor = [UIColor lightGrayColor];
+    _textField.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:1.0];
     _textField.delegate = self;
     //textField.font = [];
     _textField.textAlignment = NSTextAlignmentLeft;
     //_textField.clipsToBounds = NO;
     _textField.keyboardType = UIKeyboardTypeDefault;
+    _textField.layer.cornerRadius = 10.0;
+    _textField.clipsToBounds = YES;
     [bottomView addSubview:_textField];
     
-    postBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    postBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     postBtn.frame = CGRectMake(260, 5, 50, 30);
+    [postBtn setImage:[UIImage imageNamed:@"postBtn"] forState:UIControlStateNormal];
     [postBtn setTitle:@"post" forState:UIControlStateNormal];
     [postBtn addTarget:self action:@selector(commentPost) forControlEvents:UIControlEventTouchUpInside];
     postBtn.enabled = NO;
@@ -208,6 +228,8 @@
     
     count = 0;
     
+    self.view.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0];
+    
 }
 
 - (void)applicationDidBecomeActive
@@ -267,6 +289,7 @@
             model.nameStr = [packet.args[0] objectForKey:@"name"];
             model.contentStr = [packet.args[0] objectForKey:@"message"];
             model.iconImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[packet.args[0] objectForKey:@"iconURL"]]]];
+            model.userID = [packet.args[0] objectForKey:@"user_ID"];
             
             [commentNewArray addObject:model];
             [self.tableView reloadData];
@@ -296,6 +319,7 @@
                     model.nameStr = [dic objectForKey:@"name"];
                     model.contentStr = [dic objectForKey:@"message"];
                     model.iconImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dic objectForKey:@"iconURL"]]]];
+                    model.userID = [dic objectForKey:@"user_ID"];
                     
                     switch (count2) {
                         case 0:
@@ -421,22 +445,32 @@
     
     //bottom投稿再配置
     
-    bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 459, 320, 40)];
-    bottomView.backgroundColor = [UIColor cyanColor];
+    bottomView = [[UIView alloc] init];
+    if (size.height == 460.0) {
+        bottomView.frame = CGRectMake(0, 371, 320, 40);
+    }else {
+        bottomView.frame = CGRectMake(0, 459, 320, 40);
+    }
+    bottomView.backgroundColor = [UIColor whiteColor];
+    bottomView.layer.cornerRadius = 5.0;
+    bottomView.clipsToBounds = YES;
     bottomView.userInteractionEnabled = YES;
     
     _textField = [[UITextView alloc] init];
     _textField.frame = CGRectMake(10, 2.5, 240, 35);
-    _textField.backgroundColor = [UIColor lightGrayColor];
+    _textField.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:1.0];
     _textField.delegate = self;
     //textField.font = [];
     _textField.textAlignment = NSTextAlignmentLeft;
     //_textField.clipsToBounds = NO;
     _textField.keyboardType = UIKeyboardTypeDefault;
+    _textField.layer.cornerRadius = 10.0;
+    _textField.clipsToBounds = YES;
     [bottomView addSubview:_textField];
     
-    postBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    postBtn.frame = CGRectMake(260, 2.5, 50, 30);
+    postBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    postBtn.frame = CGRectMake(260, 5, 50, 30);
+    [postBtn setImage:[UIImage imageNamed:@"postBtn"] forState:UIControlStateNormal];
     [postBtn setTitle:@"post" forState:UIControlStateNormal];
     [postBtn addTarget:self action:@selector(commentPost) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:postBtn];
@@ -481,23 +515,33 @@
     
     //bottom投稿再配置
     
-    bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, 459, 320, 40)];
-    bottomView.backgroundColor = [UIColor cyanColor];
+    bottomView = [[UIView alloc] init];
+    if (size.height == 460.0) {
+        bottomView.frame = CGRectMake(0, 371, 320, 40);
+    }else {
+        bottomView.frame = CGRectMake(0, 459, 320, 40);
+    }
+    bottomView.backgroundColor = [UIColor whiteColor];
+    bottomView.layer.cornerRadius = 5.0;
+    bottomView.clipsToBounds = YES;
     bottomView.userInteractionEnabled = YES;
     
     _textField = [[UITextView alloc] init];
     _textField.frame = CGRectMake(10, 2.5, 240, 35);
-    _textField.backgroundColor = [UIColor lightGrayColor];
+    _textField.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:1.0];
     _textField.delegate = self;
     //textField.font = [];
     _textField.textAlignment = NSTextAlignmentLeft;
     //_textField.clipsToBounds = NO;
     _textField.keyboardType = UIKeyboardTypeDefault;
+    _textField.layer.cornerRadius = 10.0;
+    _textField.clipsToBounds = YES;
     [bottomView addSubview:_textField];
     
-    postBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    postBtn.frame = CGRectMake(260, 2.5, 50, 30);
-    [postBtn setTitle:@"post" forState:UIControlStateNormal];
+    postBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    postBtn.frame = CGRectMake(260, 5, 50, 30);
+    [postBtn setImage:[UIImage imageNamed:@"postBtn"] forState:UIControlStateNormal];
+    //[postBtn setTitle:@"post" forState:UIControlStateNormal];
     [postBtn addTarget:self action:@selector(commentPost) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:postBtn];
     
@@ -643,13 +687,15 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-    view.backgroundColor = [UIColor redColor];
+    view.backgroundColor = [UIColor whiteColor];
+    view.layer.cornerRadius = 10.0;
+    view.clipsToBounds = YES;
     UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(20, -5, 280, 30)];
     lbl.backgroundColor = [UIColor clearColor];
     //lbl.text = @"ガソリンスタンドの溝ってなんなのよ？";
     lbl.font = [UIFont boldSystemFontOfSize:14.0];
     lbl.textAlignment = NSTextAlignmentCenter;
-    lbl.textColor = [UIColor whiteColor];
+    lbl.textColor = [UIColor darkGrayColor];
     [view addSubview:lbl];
     
     if (section == 0) {
@@ -700,18 +746,210 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    DYTLCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    DYModel *m;
+    switch (indexPath.section) {
+        case 0:
+        {
+            m = [commentPastArray objectAtIndex:indexPath.row];
+            break;
+        }
+        case 1:
+        {
+            m = [commentCenterArray objectAtIndex:indexPath.row];
+            break;
+        }
+        case 2:
+        {
+            m = [commentNewArray objectAtIndex:indexPath.row];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    
+    if ([m.userID isEqualToString:userID]) {
+        //自分のcell
+        static NSString *CellIdentifier = @"myCell";
+        DYTLCell *myCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (!myCell) {
+            myCell = [[DYTLCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        else {
+            [myCell reflesh];
+        }
+        
+        myCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        switch (indexPath.section) {
+            case 0:
+            {
+                DYModel *model = [commentPastArray objectAtIndex:indexPath.row];
+                myCell.iconImgView.image = model.iconImg;
+                //NSLog(@"iconImg:%@", cell.iconImgView.image);
+                myCell.nameLbl.text = model.nameStr;
+                myCell.contentLbl.text = model.contentStr;
+                
+                [myCell.contentLbl sizeToFit];
+                //NSLog(@"frame:%f::%f", cell.contentLbl.frame.origin.x, cell.contentLbl.frame.size.width);
+                myCell.contentLbl.frame = CGRectMake(320 - 60 - myCell.contentLbl.frame.size.width,
+                                                   myCell.iconImgView.frame.origin.y + myCell.iconImgView.frame.size.height - 5,
+                                                     myCell.contentLbl.frame.size.width,
+                                                     myCell.contentLbl.frame.size.height);
+                
+                /*
+                myCell.bgImgView.frame = CGRectMake(myCell.contentLbl.frame.origin.x - 5,
+                                                    myCell.contentLbl.frame.origin.y - 7,
+                                                    myCell.bgImgView.image.size.width,
+                                                    myCell.bgImgView.image.size.height);
+                 */
+                myCell.bgImgView.frame = CGRectMake(myCell.contentLbl.frame.origin.x - 5,
+                                                    myCell.contentLbl.frame.origin.y - 5,
+                                                    myCell.contentLbl.frame.size.width + 25,
+                                                    myCell.contentLbl.frame.size.height + 10);
+                 
+                 
+                break;
+            }
+            case 1:
+            {
+                DYModel *model = [commentCenterArray objectAtIndex:indexPath.row];
+                myCell.iconImgView.image = model.iconImg;
+                //NSLog(@"iconImg:%@", cell.iconImgView.image);
+                myCell.nameLbl.text = model.nameStr;
+                myCell.contentLbl.text = model.contentStr;
+                [myCell.contentLbl sizeToFit];
+                myCell.contentLbl.frame = CGRectMake(320 - 60 - myCell.contentLbl.frame.size.width,
+                                                   myCell.iconImgView.frame.origin.y + myCell.iconImgView.frame.size.height - 5,
+                                                     myCell.contentLbl.frame.size.width,
+                                                     myCell.contentLbl.frame.size.height);
+                
+                myCell.bgImgView.frame = CGRectMake(myCell.contentLbl.frame.origin.x - 5,
+                                                    myCell.contentLbl.frame.origin.y - 5,
+                                                    myCell.contentLbl.frame.size.width + 25,
+                                                    myCell.contentLbl.frame.size.height + 10);
+                break;
+            }
+            case 2:
+            {
+                DYModel *model = [commentNewArray objectAtIndex:indexPath.row];
+                myCell.iconImgView.image = model.iconImg;
+                //NSLog(@"iconImg:%@", cell.iconImgView.image);
+                myCell.nameLbl.text = model.nameStr;
+                myCell.contentLbl.text = model.contentStr;
+                [myCell.contentLbl sizeToFit];
+                myCell.contentLbl.frame = CGRectMake(320 - 60 - myCell.contentLbl.frame.size.width,
+                                                   myCell.iconImgView.frame.origin.y + myCell.iconImgView.frame.size.height - 5,
+                                                     myCell.contentLbl.frame.size.width,
+                                                     myCell.contentLbl.frame.size.height);
+                myCell.bgImgView.frame = CGRectMake(myCell.contentLbl.frame.origin.x - 5,
+                                                    myCell.contentLbl.frame.origin.y - 5,
+                                                    myCell.contentLbl.frame.size.width + 25,
+                                                    myCell.contentLbl.frame.size.height + 10);
+                break;
+            }
+                
+            default:
+                break;
+        }
+        
+        return myCell;
+
+    }else {
+        //他人のcell
+        static NSString *CellIdentifier = @"otherCell";
+        DYOtherTLCell *otherCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (!otherCell) {
+            otherCell = [[DYOtherTLCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        else {
+            [otherCell reflesh];
+        }
+        
+        otherCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        switch (indexPath.section) {
+            case 0:
+            {
+                DYModel *model = [commentPastArray objectAtIndex:indexPath.row];
+                otherCell.iconImgView.image = model.iconImg;
+                //NSLog(@"iconImg:%@", otherCell.iconImgView.image);
+                otherCell.nameLbl.text = model.nameStr;
+                otherCell.contentLbl.text = model.contentStr;
+                
+                [otherCell.contentLbl sizeToFit];
+                //NSLog(@"frame:%f::%f", cell.contentLbl.frame.origin.x, cell.contentLbl.frame.size.width);
+                otherCell.contentLbl.frame = CGRectMake(59,
+                                                   otherCell.iconImgView.frame.origin.y + otherCell.iconImgView.frame.size.height - 5,
+                                                   otherCell.contentLbl.frame.size.width,
+                                                   otherCell.contentLbl.frame.size.height);
+                
+                otherCell.bgImgView.frame = CGRectMake(otherCell.contentLbl.frame.origin.x - 19,
+                                                    otherCell.contentLbl.frame.origin.y - 5,
+                                                    otherCell.contentLbl.frame.size.width + 25,
+                                                    otherCell.contentLbl.frame.size.height + 10);
+                
+                break;
+            }
+            case 1:
+            {
+                DYModel *model = [commentCenterArray objectAtIndex:indexPath.row];
+                otherCell.iconImgView.image = model.iconImg;
+                //NSLog(@"iconImg:%@", otherCell.iconImgView.image);
+                otherCell.nameLbl.text = model.nameStr;
+                otherCell.contentLbl.text = model.contentStr;
+                [otherCell.contentLbl sizeToFit];
+                otherCell.contentLbl.frame = CGRectMake(59,
+                                                   otherCell.iconImgView.frame.origin.y + otherCell.iconImgView.frame.size.height -5,
+                                                   otherCell.contentLbl.frame.size.width,
+                                                   otherCell.contentLbl.frame.size.height);
+                otherCell.bgImgView.frame = CGRectMake(otherCell.contentLbl.frame.origin.x - 19,
+                                                    otherCell.contentLbl.frame.origin.y - 5,
+                                                    otherCell.contentLbl.frame.size.width + 25,
+                                                    otherCell.contentLbl.frame.size.height + 10);
+                break;
+            }
+            case 2:
+            {
+                DYModel *model = [commentNewArray objectAtIndex:indexPath.row];
+                otherCell.iconImgView.image = model.iconImg;
+                //NSLog(@"iconImg:%@", cell.iconImgView.image);
+                otherCell.nameLbl.text = model.nameStr;
+                otherCell.contentLbl.text = model.contentStr;
+                [otherCell.contentLbl sizeToFit];
+                otherCell.contentLbl.frame = CGRectMake(59,
+                                                   otherCell.iconImgView.frame.origin.y + otherCell.iconImgView.frame.size.height - 5,
+                                                   otherCell.contentLbl.frame.size.width ,
+                                                   otherCell.contentLbl.frame.size.height);
+                
+                otherCell.bgImgView.frame = CGRectMake(otherCell.contentLbl.frame.origin.x -19,
+                                                    otherCell.contentLbl.frame.origin.y - 5,
+                                                    otherCell.contentLbl.frame.size.width + 25,
+                                                    otherCell.contentLbl.frame.size.height + 10);
+                break;
+            }
+                
+            default:
+                break;
+        }
+
+        return otherCell;
+    }
+    
+    /*
+    static NSString *CellIdentifier = @"otherCell";
+    DYOtherTLCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[DYTLCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[DYOtherTLCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     else {
         [cell reflesh];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
+    */
+    /*
+    //otherCell
     switch (indexPath.section) {
         case 0:
         {
@@ -720,7 +958,14 @@
             NSLog(@"iconImg:%@", cell.iconImgView.image);
             cell.nameLbl.text = model.nameStr;
             cell.contentLbl.text = model.contentStr;
+            
             [cell.contentLbl sizeToFit];
+            //NSLog(@"frame:%f::%f", cell.contentLbl.frame.origin.x, cell.contentLbl.frame.size.width);
+            cell.contentLbl.frame = CGRectMake(50,
+                                               cell.iconImgView.frame.origin.y + cell.iconImgView.frame.size.height + 10,
+                                               cell.contentLbl.frame.size.width,
+                                               cell.contentLbl.frame.size.height);
+            
             break;
         }
         case 1:
@@ -731,6 +976,10 @@
             cell.nameLbl.text = model.nameStr;
             cell.contentLbl.text = model.contentStr;
             [cell.contentLbl sizeToFit];
+            cell.contentLbl.frame = CGRectMake(50,
+                                               cell.iconImgView.frame.origin.y + cell.iconImgView.frame.size.height + 10,
+                                               cell.contentLbl.frame.size.width,
+                                               cell.contentLbl.frame.size.height);
             break;
         }
         case 2:
@@ -741,12 +990,62 @@
             cell.nameLbl.text = model.nameStr;
             cell.contentLbl.text = model.contentStr;
             [cell.contentLbl sizeToFit];
+            cell.contentLbl.frame = CGRectMake(50,
+                                               cell.iconImgView.frame.origin.y + cell.iconImgView.frame.size.height + 10,
+                                               cell.contentLbl.frame.size.width,
+                                               cell.contentLbl.frame.size.height);
             break;
         }
             
         default:
             break;
-    }
+    }*/
+    
+    /* myTweetCell
+    switch (indexPath.section) {
+        case 0:
+        {
+            DYModel *model = [commentPastArray objectAtIndex:indexPath.row];
+            cell.iconImgView.image = model.iconImg;
+            NSLog(@"iconImg:%@", cell.iconImgView.image);
+            cell.nameLbl.text = model.nameStr;
+            cell.contentLbl.text = model.contentStr;
+
+            [cell.contentLbl sizeToFit];
+            //NSLog(@"frame:%f::%f", cell.contentLbl.frame.origin.x, cell.contentLbl.frame.size.width);
+            cell.contentLbl.frame = CGRectMake(320 - 50 - cell.contentLbl.frame.size.width,
+                                               cell.iconImgView.frame.origin.y + cell.iconImgView.frame.size.height + 10, cell.contentLbl.frame.size.width, cell.contentLbl.frame.size.height);
+            
+            break;
+        }
+        case 1:
+        {
+            DYModel *model = [commentCenterArray objectAtIndex:indexPath.row];
+            cell.iconImgView.image = model.iconImg;
+            NSLog(@"iconImg:%@", cell.iconImgView.image);
+            cell.nameLbl.text = model.nameStr;
+            cell.contentLbl.text = model.contentStr;
+            [cell.contentLbl sizeToFit];
+            cell.contentLbl.frame = CGRectMake(320 - 50 - cell.contentLbl.frame.size.width,
+                                               cell.iconImgView.frame.origin.y + cell.iconImgView.frame.size.height + 10, cell.contentLbl.frame.size.width, cell.contentLbl.frame.size.height);
+            break;
+        }
+        case 2:
+        {
+            DYModel *model = [commentNewArray objectAtIndex:indexPath.row];
+            cell.iconImgView.image = model.iconImg;
+            NSLog(@"iconImg:%@", cell.iconImgView.image);
+            cell.nameLbl.text = model.nameStr;
+            cell.contentLbl.text = model.contentStr;
+            [cell.contentLbl sizeToFit];
+            cell.contentLbl.frame = CGRectMake(320 - 50 - cell.contentLbl.frame.size.width,
+                                               cell.iconImgView.frame.origin.y + cell.iconImgView.frame.size.height + 10, cell.contentLbl.frame.size.width, cell.contentLbl.frame.size.height);
+            break;
+        }
+            
+        default:
+            break;
+    }*/
     
     /*
     DYModel *model = [commentArray objectAtIndex:indexPath.row];
@@ -755,7 +1054,7 @@
     [cell.contentLbl sizeToFit];
     */
     
-    return cell;
+    //return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -777,31 +1076,31 @@
         case 0:
         {
             DYModel *model = [commentPastArray objectAtIndex:indexPath.row];
-            CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
-                                                  constrainedToSize:CGSizeMake(300, SIZE_MAX)
+            CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:12.0]
+                                                  constrainedToSize:CGSizeMake(170, SIZE_MAX)
                                                       lineBreakMode:NSLineBreakByWordWrapping];
             //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
-            return contentTextSize.height + 70.0;
+            return contentTextSize.height + 50.0;
             break;
         }
         case 1:
         {
             DYModel *model = [commentCenterArray objectAtIndex:indexPath.row];
-            CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
-                                                  constrainedToSize:CGSizeMake(300, SIZE_MAX)
+            CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:12.0]
+                                                  constrainedToSize:CGSizeMake(170, SIZE_MAX)
                                                       lineBreakMode:NSLineBreakByWordWrapping];
             //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
-            return contentTextSize.height + 70.0;
+            return contentTextSize.height + 50.0;
             break;
         }
         case 2:
         {
             DYModel *model = [commentNewArray objectAtIndex:indexPath.row];
-            CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
-                                                  constrainedToSize:CGSizeMake(300, SIZE_MAX)
+            CGSize contentTextSize = [model.contentStr sizeWithFont:[UIFont boldSystemFontOfSize:12.0]
+                                                  constrainedToSize:CGSizeMake(170, SIZE_MAX)
                                                       lineBreakMode:NSLineBreakByWordWrapping];
             //NSLog(@"row:%d::height:%f", indexPath.row, contentTextSize.height);
-            return contentTextSize.height + 70.0;
+            return contentTextSize.height + 50.0;
             break;
 
         }

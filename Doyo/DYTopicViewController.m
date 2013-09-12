@@ -29,7 +29,7 @@
     if (self) {
         // Custom initialization
         
-        self.title = @"topic";
+        self.title = @"わだい";
         //self.navigationItem.title = @"話題";
     }
     return self;
@@ -64,11 +64,12 @@
     [sv setSelectedSegmentIndex:0 animated:NO];
     sv.frame = CGRectMake(0, 0, 150, 35);
     sv.crossFadeLabelsOnDrag = YES;
-    sv.thumb.tintColor = [UIColor colorWithRed:0.345 green:0.889 blue:0.312 alpha:1.000];
+    sv.thumb.tintColor = [UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0];
     self.navigationItem.titleView = sv;
     
     //話題投稿画面show
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithTitle:@"post" style:UIBarButtonItemStyleBordered target:self action:@selector(showTopicPostCtl)];
+    btn.tintColor = [UIColor colorWithRed:246.0/255.0 green:129.0/255.0 blue:35.0/255.0 alpha:1.0];
     self.navigationItem.rightBarButtonItem = btn;
     
     //初期起動はnewを表示
@@ -77,6 +78,9 @@
     
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.separatorColor = [UIColor clearColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //[self createArray];
     
@@ -111,7 +115,7 @@
     //alredyBtnArray = [NSMutableArray array];
     //[self niceArray];
     
-    
+    self.view.backgroundColor = [UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0];
 }
 /*
 -(void)niceArray
@@ -369,6 +373,8 @@
             cell.pointLbl.frame = CGRectMake(cell.niceBtn.frame.origin.x + cell.niceBtn.frame.size.width + 80,
                                              cell.titleLbl.frame.origin.y + cell.titleLbl.frame.size.height + 10,
                                              40, 40);
+            cell.bgView.frame = CGRectMake(10, 10, 300,
+                                           cell.niceBtn.frame.origin.y + cell.niceBtn.frame.size.height + 5);
             break;
         }
         case 1:
@@ -388,6 +394,8 @@
             cell.pointLbl.frame = CGRectMake(cell.niceBtn.frame.origin.x + cell.niceBtn.frame.size.width + 80,
                                              cell.titleLbl.frame.origin.y + cell.titleLbl.frame.size.height + 10,
                                              40, 40);
+            cell.bgView.frame = CGRectMake(10, 10, 300,
+                                           cell.niceBtn.frame.origin.y + cell.niceBtn.frame.size.height + 5);
             break;
         }
             
@@ -408,7 +416,7 @@
             CGSize size = [model.titleStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                      constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                          lineBreakMode:NSLineBreakByWordWrapping];
-            return size.height + 120.0;
+            return size.height + 145.0;
             break;
         }
         case 1:
@@ -417,7 +425,7 @@
             CGSize size = [model.titleStr sizeWithFont:[UIFont boldSystemFontOfSize:14.0]
                                      constrainedToSize:CGSizeMake(300, SIZE_MAX)
                                          lineBreakMode:NSLineBreakByWordWrapping];
-            return size.height + 120.0;
+            return size.height + 145.0;
             break;
         }
         default:
