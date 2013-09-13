@@ -41,21 +41,20 @@
     if(self){
         
         
-        
+        int i = arc4random() % 2;
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        [ud setObject:@"ka_ru_pi_n" forKey:@"user_ID"];
-        [ud setObject:@"弥太郎" forKey:@"name"];
-        [ud setObject:@"http://a0.twimg.com/profile_images/3620990718/a3d0dcb5cd2ad7e58086d98adfb80ef7_normal.jpeg" forKey:@"iconImgStr"];
+        if (i == 0) {
+            [ud setObject:@"ka_ru_pi_n" forKey:@"user_ID"];
+            [ud setObject:@"弥太郎" forKey:@"name"];
+            [ud setObject:@"http://a0.twimg.com/profile_images/3620990718/a3d0dcb5cd2ad7e58086d98adfb80ef7_normal.jpeg" forKey:@"iconImgStr"];
+        }else if (i == 1){
+            [ud setObject:@"09dasan" forKey:@"user_ID"];
+            [ud setObject:@"ゆうまっちょだっちょ" forKey:@"name"];
+            [ud setObject:@"http://a0.twimg.com/profile_images/2498123633/image_normal.jpg" forKey:@"iconImgStr"];
+        }
+        
         [ud synchronize];
         
-        
-        /*
-         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-         [ud setObject:@"09dasan" forKey:@"user_ID"];
-         [ud setObject:@"ゆうまっちょだっちょ" forKey:@"name"];
-         [ud setObject:@"http://a0.twimg.com/profile_images/2498123633/image_normal.jpg" forKey:@"iconImgStr"];
-         [ud synchronize];
-        */
         
         //NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         

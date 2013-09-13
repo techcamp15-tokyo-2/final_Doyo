@@ -143,6 +143,7 @@
         if (success) {
             [newArray addObjectsFromArray:array];
             [_tableView reloadData];
+            [SVProgressHUD dismiss];
         }
     }];
     rankingArray = [NSMutableArray array];
@@ -157,10 +158,11 @@
              */
             [rankingArray addObjectsFromArray:array];
             [_tableView reloadData];
+            [SVProgressHUD dismiss];
         }
     }];
     
-    [SVProgressHUD dismiss];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -177,6 +179,8 @@
 
 -(void)changePage:(SVSegmentedControl*)seg
 {
+    [self refresh];
+    
     [_tableView setContentOffset:CGPointMake(0.0, 0.0) animated:NO];
     if (seg.selectedSegmentIndex == 0) {
         //open new
@@ -490,6 +494,7 @@
 
 -(void)refresh
 {
+    [SVProgressHUD showWithStatus:@"Loading"];
     [[DYManager sharedManager] requestTopicLogNewDataCompletion:^(BOOL sucsess, NSArray *array) {
         //NSLog(@"newArray:%@", array);
         if (sucsess) {
@@ -497,6 +502,7 @@
             [newArray addObjectsFromArray:array];
             
             [_tableView reloadData];
+            [SVProgressHUD dismiss];
         }
        
     }];
@@ -508,6 +514,7 @@
             [rankingArray addObjectsFromArray:array];
             
             [_tableView reloadData];
+            [SVProgressHUD dismiss];
         }
      
     }];

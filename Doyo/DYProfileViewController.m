@@ -47,23 +47,28 @@
     bgview.clipsToBounds = YES;
     [_scrollView addSubview:bgview];
     
-    _iconImg.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:iconImgStr]]];
+    //_iconImg.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:iconImgStr]]];
+    UIImageView *iconImgView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:iconImgStr]]]];
+    iconImgView.frame = CGRectMake(20, 10, 80, 80);
+    [bgview addSubview:iconImgView];
+    iconImgView.layer.cornerRadius = iconImgView.frame.size.width / 2.0;
+    iconImgView.clipsToBounds = YES;
+    [bgview addSubview:iconImgView];
+    //[self.view bringSubviewToFront:_iconImg];
     
-    [self.view bringSubviewToFront:_iconImg];
-    UILabel *nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(140, 35, 150, 30)];
+    UILabel *nameLbl = [[UILabel alloc] initWithFrame:CGRectMake(130, 15, 150, 30)];
     nameLbl.text = name;
     nameLbl.backgroundColor = [UIColor lightGrayColor];
     nameLbl.font = [UIFont systemFontOfSize:14.0];
     nameLbl.textAlignment = NSTextAlignmentCenter;
     nameLbl.layer.cornerRadius = 5.0;
     nameLbl.clipsToBounds = YES;
+    [bgview addSubview:nameLbl];
     
-    _iconImg.layer.cornerRadius = _iconImg.frame.size.width / 2.0;
-    _iconImg.clipsToBounds = YES;
-    [_scrollView bringSubviewToFront:_iconImg];
-    [_scrollView addSubview:nameLbl];
+    //[_scrollView bringSubviewToFront:_iconImg];
+    //[_scrollView addSubview:nameLbl];
     
-    UILabel *userIDLbl = [[UILabel alloc] initWithFrame:CGRectMake(140, nameLbl.frame.origin.y + nameLbl.frame.size.height + 10,
+    UILabel *userIDLbl = [[UILabel alloc] initWithFrame:CGRectMake(130, nameLbl.frame.origin.y + nameLbl.frame.size.height + 10,
                                                                    150, 30)];
     userIDLbl.text = userID;
     userIDLbl.backgroundColor = [UIColor lightGrayColor];
@@ -71,12 +76,18 @@
     userIDLbl.textAlignment = NSTextAlignmentCenter;
     userIDLbl.layer.cornerRadius = 5.0;
     userIDLbl.clipsToBounds = YES;
-    [_scrollView addSubview:userIDLbl];
+    [bgview addSubview:userIDLbl];
     
-    _profImgView.image = [UIImage imageNamed:@"profile"];
+    //_profImgView.image = [UIImage imageNamed:@"profile"];
+    
+    UIImage *img = [UIImage imageNamed:@"profile10"];
+    UIImageView *profImgView = [[UIImageView alloc] initWithImage:img];
+    //profImgView.backgroundColor = [UIColor redColor];
+    profImgView.frame = CGRectMake(15, bgview.frame.origin.y + bgview.frame.size.height + 10, img.size.width, img.size.height);
+    [_scrollView addSubview:profImgView];
     
     _scrollView.frame = self.view.frame;
-    _scrollView.contentSize = CGSizeMake(320, 400);
+    _scrollView.contentSize = CGSizeMake(320, profImgView.frame.origin.y + profImgView.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning

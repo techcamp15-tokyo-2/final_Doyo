@@ -10,7 +10,6 @@
 
 @interface DYProfileViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *iconImg;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *profImgView;

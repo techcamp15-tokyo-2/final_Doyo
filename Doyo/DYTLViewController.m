@@ -13,6 +13,7 @@
 #import "DYCommentPostViewController.h"
 #import "SocketIOPacket.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SVProgressHUD.h"
 
 @interface DYTLViewController ()
 
@@ -236,6 +237,7 @@
 {
     // localhost:3000に接続開始
     [socketIO connectToHost:@"49.212.140.71" onPort:10001];
+    [SVProgressHUD showWithStatus:@"Loading"];
 }
 
 - (void)applicationWillResignActive
@@ -279,11 +281,14 @@
     
     if ([packet.name isEqualToString:@"message:receive"]) {
         // メッセージが空でなければ追加
+        //[self showAddTopic];
+        
         if (packet.args[0][@"message"]) {
             //[commentArray insertObject:packet.args[0][@"message"] atIndex:0];
             //[commentArray addObject:packet.args[0][@"message"]];
             //[self.datas insertObject:packet.args[0][@"user_ID"] atIndex:0];
             //[commentArray addObject:packet.args[0]];
+            
             
             DYModel *model = [[DYModel alloc] init];
             model.nameStr = [packet.args[0] objectForKey:@"name"];
@@ -297,6 +302,8 @@
     }
     else if([packet.name isEqualToString:@"firstMessage"]) {
         //初期起動
+        
+        
         
         if (commentPastArray.count > 0) {
             [commentPastArray removeAllObjects];
@@ -345,9 +352,12 @@
         }
         
         [self.tableView reloadData];
+        [SVProgressHUD dismiss];
     }
     else if ([packet.name isEqualToString:@"addTopic"]) {
         // メッセージが空でなければ追加
+        
+        [self showAddTopic];
         
         for (NSDictionary *dic in packet.args[0]) {
             
@@ -393,6 +403,37 @@
         [self.tableView reloadData];
     }
     
+}
+
+-(void)showAddTopic
+{
+    UIView *view = [[UIView alloc] init];
+    view.frame = CGRectMake(self.view.frame.size.width/2 - 75, self.view.frame.size.height/2 - 75, 150, 150);
+    view.alpha = 0.0;
+    view.backgroundColor = [UIColor whiteColor];
+    view.layer.cornerRadius = 15.0;
+    view.clipsToBounds = YES;
+    [self.view addSubview:view];
+    
+    UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 130, 80)];
+    lbl.backgroundColor = [UIColor clearColor];
+    lbl.text = @"わだい追加";
+    lbl.textAlignment = NSTextAlignmentCenter;
+    lbl.font = [UIFont boldSystemFontOfSize:20.0];
+    [view addSubview:lbl];
+    
+    [UIView animateWithDuration:0.7 animations:^{
+        view.frame = CGRectMake(self.view.frame.size.width/2 - 75, self.view.frame.size.height/2 - 75, 150, 150);
+        view.alpha = 1.0;
+        //view.transform = CGAffineTransformMakeScale(<#CGFloat sx#>, <#CGFloat sy#>)
+    } completion:^(BOOL finished) {
+                
+        [UIView animateWithDuration:0.7 animations:^{
+            view.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [view removeFromSuperview];
+        }];
+    }];
 }
 
 // サーバとの接続が切断されたときに実行されるメソッド
@@ -694,6 +735,9 @@
     lbl.backgroundColor = [UIColor clearColor];
     //lbl.text = @"ガソリンスタンドの溝ってなんなのよ？";
     lbl.font = [UIFont boldSystemFontOfSize:14.0];
+    //lbl.minimumFontSize = 8.0;
+    lbl.adjustsFontSizeToFitWidth = YES;
+    lbl.minimumScaleFactor = 5.0 / 14.0;
     lbl.textAlignment = NSTextAlignmentCenter;
     lbl.textColor = [UIColor darkGrayColor];
     [view addSubview:lbl];

@@ -11,6 +11,7 @@
 #import "DYModel.h"
 #import "DYCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SVProgressHUD.h"
 
 @interface DYLogContentViewController ()
 
@@ -39,10 +40,12 @@
     NSLog(@"topic_title:%@", _topicTitle);
     
     timeLineArray = [NSMutableArray array];
+    [SVProgressHUD showWithStatus:@"Loding"];
     [[DYManager sharedManager] requestLogPushDataTopic_ID:[_topicID intValue] Completion:^(BOOL success, NSArray *array) {
         if (success) {
             [timeLineArray addObjectsFromArray:array];
             [_tabelView reloadData];
+            [SVProgressHUD dismiss];
             NSLog(@"%d", timeLineArray.count);
             /*
             if (timeLineArray.count > 0) {
